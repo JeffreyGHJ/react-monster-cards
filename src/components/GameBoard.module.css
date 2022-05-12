@@ -1,0 +1,14 @@
+#monster h2,
+#player h2 {
+  margin: 0.25rem;
+}
+
+.game-board{
+  background-color: rgb(215, 200, 117);
+}
+
+.enemy-card-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
