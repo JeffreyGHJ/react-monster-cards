@@ -1,21 +1,20 @@
 import classes from './MonsterCard.module.css';
 
+// STYLING
+const flipCard = `${classes.card} ${classes['flip-inner']}`;
+const cardPortrait = `${classes.container} ${classes['monster-portrait']}`;
+const cardInfo = `${classes.container} ${classes['monster-info']}`;
+const cardStatus = `${classes.container} ${classes['monster-status']}`
+
 const MonsterCard = props => {
-
-    // STYLING
-    const flipCard = `${classes.card} ${classes['flip-inner']}`;
-    const cardPortrait = `${classes.container} ${classes['monster-portrait']}`;
-    const cardInfo = `${classes.container} ${classes['monster-info']}`;
-    const cardStatus = `${classes.container} ${classes['monster-status']}`
-
     // DATA
     const monster = props.monster;
     const customHeight = {height: monster.customHeight};
     const maxHealth = props.monster.maxHealth;
 
     const currentHealthPercent = () => {
-        console.log(monster.health);
-        console.log(maxHealth);
+        //console.log(monster.health);
+        //console.log(maxHealth);
         let percent = ( monster.health / maxHealth ) * 100;
         let result = percent + '%';
         return {width: result.toString()};
@@ -44,7 +43,7 @@ const MonsterCard = props => {
                 </section>
 
                 <section className={classes['card-back']}>
-
+                    
                 </section>
             </div>
         </div>

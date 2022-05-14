@@ -21,6 +21,8 @@
 }
 
 .card {
+    display: flex;
+    justify-content: center;
     margin: auto;
     width: 34vh;
     height: 50vh;
@@ -68,12 +70,18 @@
 
 /* Style the front side (fallback if image is missing) */
 .card-front {
+    position: absolute;
     color: black;
 }
 
 /* Style the back side */
 .card-back {
-    background-color: dodgerblue;
+    position: absolute;
+    padding: 1rem;
+    width: 32.4vh;
+    height: 48.8vh;
+    border-radius: 8px;
+    background-color: rgb(74, 51, 99);
     color: white;
     transform: rotateY(180deg);
 }
