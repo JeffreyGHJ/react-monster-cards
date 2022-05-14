@@ -51,22 +51,27 @@ function App() {
   };
 
   const healHandler = () => {
-    let damage = attackPlayer(true);
+    //let damage = attackPlayer(true);
     let heal = Math.round(Math.random() * 4);
     if ( heal + playerHealth > 10 ) { heal = 10 - playerHealth };
-    let newHealth = playerHealth + heal - damage;
-    setPlayerHealth(newHealth);
+    //let newHealth = playerHealth + heal - damage;
+    setPlayerHealth((oldHealth) => {
+      return oldHealth + heal;
+    });
     console.log("Player heals for " + heal + " hp");
+    attackPlayer();
   }
 
   const attackPlayer = (heal) => {
     let damage = Math.round(Math.random() * 2);
     console.log(currentEnemy.name + " attacks player for " + damage + " hp");
     
-    if (heal) { return damage };
+    //if (heal) { return damage };
 
-    let newHealth = playerHealth - damage > 0 ? playerHealth - damage : 0;
-    setPlayerHealth(newHealth);
+    //let newHealth = playerHealth - damage > 0 ? playerHealth - damage : 0;
+    setPlayerHealth((oldHealth) => {
+      return oldHealth - damage;
+    });
     
   };
 
