@@ -2,6 +2,7 @@ import classes from './GameBoard.module.css';
 import MonsterCard from "./MonsterCard";
 
 const gameBoardStyle = `container ${classes['game-board']}`;
+const playerLevelStyle = `container ${classes['player-level']}`;
 
 const GameBoard = props => {
 
@@ -10,13 +11,13 @@ const GameBoard = props => {
         board = 
         <div>
             <h1>You Lose!</h1>
-            <button onClick={props.resetHandler}>Reset</button>
+            <button onClick={() => props.resetHandler('reset')}>Reset</button>
         </div>
     } else if ( props.currentEnemy.health === undefined ) {
         board = 
             <div>
                 <h1>You Win!</h1>
-                <button onClick={props.newGameHandler}>New Game+</button>
+                <button onClick={() => props.resetHandler('continue')}>New Game+</button>
             </div>
     } else {
         board = <MonsterCard monster={props.currentEnemy} />
@@ -25,6 +26,11 @@ const GameBoard = props => {
     return (
         <div className={gameBoardStyle}>
             <h1>Game Board</h1>
+            <div className={playerLevelStyle}>
+                <h4>PLAYER LEVEL</h4>
+                <h1>{props.playerLevel}</h1>
+            </div>
+            
             <div className={classes['enemy-card-space']}>
                 {board}
             </div>

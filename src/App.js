@@ -2,29 +2,37 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import GameBoard from './components/GameBoard';
 import PlayerControls from './components/PlayerControls';
-import CardDetails from './assets/CardDetails';
+import CardGenerator from './util/CardGenerator.js';
 
-let enemyList = [...CardDetails.monsters];
-let playerLevel = 1;
+let enemyList = CardGenerator();
 
 function App() {
-  const [currentEnemy, setCurrentEnemy] = useState(enemyList[0]);
+  const [playerLevel, setPlayerLevel] = useState(1);
   const [playerHealth, setPlayerHealth] = useState(10);
-
+  const [maxPlayerHealth, setMaxPlayerHealth] = useState(10);
+  const [currentEnemy, setCurrentEnemy] = useState(enemyList[0]);
+  
   useEffect(() => {
     console.log("Current Enemy health: " + currentEnemy.health);
 
     if (currentEnemy.health <= 0) {
-      console.log("Winner!");
+      console.log("Enemy slain!");
       enemyList.shift();
       if ( enemyList[0] ) {
+        enemyList[0].health *= playerLevel;
+        enemyList[0].maxHealth *= playerLevel;
         setCurrentEnemy( enemyList[0] );
       } else {
         setCurrentEnemy( {} );
       }
     }
 
-  }, [currentEnemy.health]);
+  }, [currentEnemy.health, playerLevel]);
+
+  useEffect(() => {
+    console.log("new maxPlayerHealth: " + maxPlayerHealth);
+    setPlayerHealth(maxPlayerHealth);
+  }, [maxPlayerHealth]);
 
   useEffect(() => {
     console.log("Current player health: " + playerHealth);
@@ -51,10 +59,8 @@ function App() {
   };
 
   const healHandler = () => {
-    //let damage = attackPlayer(true);
-    let heal = Math.round(Math.random() * 4);
-    if ( heal + playerHealth > 10 ) { heal = 10 - playerHealth };
-    //let newHealth = playerHealth + heal - damage;
+    let heal = Math.round(Math.random() * (3 + playerLevel));
+    if ( heal + playerHealth > maxPlayerHealth ) { heal = maxPlayerHealth - playerHealth };
     setPlayerHealth((oldHealth) => {
       return oldHealth + heal;
     });
@@ -62,37 +68,37 @@ function App() {
     attackPlayer();
   }
 
-  const attackPlayer = (heal) => {
+  const attackPlayer = () => {
     let damage = Math.round(Math.random() * 2);
     console.log(currentEnemy.name + " attacks player for " + damage + " hp");
-    
-    //if (heal) { return damage };
-
-    //let newHealth = playerHealth - damage > 0 ? playerHealth - damage : 0;
     setPlayerHealth((oldHealth) => {
       return oldHealth - damage;
     });
-    
   };
 
-  const resetHandler = () => {
-    //playerLevel = status === 'win' ? playerLevel + 1 : 1;
-    playerLevel = 1;
-    setPlayerHealth(10);
-    enemyList = [...CardDetails.monsters];
-    console.log(CardDetails.monsters);
-    console.log("Player level: " + playerLevel);
+  const resetHandler = (status) => {
+    enemyList = CardGenerator();
     setCurrentEnemy(enemyList[0]);
-  };
 
-  const newGameHandler = () => {
-    playerLevel = playerLevel + 1;
-    setPlayerHealth(10);
-    enemyList = [...CardDetails.monsters];
-    console.log(CardDetails.monsters);
-    console.log("Player level: " + playerLevel);
-    setCurrentEnemy(enemyList[0]);
-  }
+    if ( status === 'continue' ) {
+      let newPlayerLevel = playerLevel + 1;
+      let healthBonus = 2 * newPlayerLevel;
+      enemyList[0].health *= newPlayerLevel;
+      enemyList[0].maxHealth *= newPlayerLevel;
+      setPlayerLevel((oldPlayerLevel) => {
+        return oldPlayerLevel + 1;
+      });
+      setMaxPlayerHealth((oldHealth) => {
+        return oldHealth + healthBonus;
+      });
+    } else if ( status === 'reset' ) {
+      setPlayerHealth(10);
+      setMaxPlayerHealth(10);
+      setPlayerLevel(1);
+    } else {
+      console.log("Error: resetHandler status not handled");
+    }
+  };
 
   return (
     <div className="App">
@@ -101,12 +107,13 @@ function App() {
       <GameBoard 
         currentEnemy={currentEnemy} 
         resetHandler={resetHandler}
-        newGameHandler={newGameHandler}
-        playerHealth={playerHealth}/>
+        playerHealth={playerHealth}
+        playerLevel={playerLevel}/>
       <PlayerControls 
         attackHandler={attackHandler} 
         healHandler={healHandler}
-        playerHealth={playerHealth}/>
+        playerHealth={playerHealth}
+        maxPlayerHealth={maxPlayerHealth}/>
     </div>
   );
 }

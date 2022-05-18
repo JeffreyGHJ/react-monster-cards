@@ -5,8 +5,7 @@ const playerControls = `${classes['player-controls']} container`
 const PlayerControls = props => {
 
     const currentHealthPercent = () => {
-
-        let percent = ( props.playerHealth / 10 ) * 100;
+        let percent = ( props.playerHealth / props.maxPlayerHealth ) * 100;
         let result = percent + '%';
         return {width: result.toString()};
     }
@@ -19,8 +18,9 @@ const PlayerControls = props => {
                 <button id='special-attack-button' >Special Attack</button>
                 <button id='heal-button' onClick={props.healHandler}>Heal</button>
                 <button id='surrender-button' >Surrender</button>
+                <h4>HP: {props.playerHealth}</h4>
                 <div className={classes.healthbar}>
-                    <div className={classes.healthbar__value}  style={currentHealthPercent()}></div>
+                    <div className={classes.healthbar__value} style={currentHealthPercent()}></div>
                 </div>
             </div>
         </div>

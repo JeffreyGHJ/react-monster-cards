@@ -14,8 +14,8 @@
 
 .container {
     text-align: center;
-    padding: 0.5rem;
-    margin: 1rem auto;
+    padding: 0.8vh;
+    margin: 0.8vh auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
 }
@@ -24,21 +24,27 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 34vh;
-    height: 50vh;
+    width: 26vh;
+    height: 40vh;
     text-align: center;
     padding: 0.5rem;
     margin: 1rem auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
     background-color: white;
+    font-size: 1.4vh;
+}
+
+.card h2{
+    font-size: 1.6vh;
+    margin: 0px;
 }
 
 .healthbar {
     width: 100%;
-    height: 40px;
+    height: 1.2vh;
     border: 1px solid #575757;
-    margin: 1rem 0;
+    margin: .5vh 0;
     background: #fde5e5;
 }
 
@@ -52,13 +58,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 256px;
-    width: 256px;
-/*     background-color: rgb(200, 185, 149); */
+    width: 14vh;
+    height: 25vh;
+
 }
 
 .monster-portrait img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 7vh;
+    min-height: 7vh;
+}
+
+.monster-status {
     width: auto;
+    margin-right: .5vw;
+    margin-left: .5vw;
+}
+
+.card-body {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: inherit;
+    width: auto;
+    margin-right: .5vw;
+    margin-left: .5vw;
 }
 
 .card-front,
@@ -70,18 +103,32 @@
 
 /* Style the front side (fallback if image is missing) */
 .card-front {
-    position: absolute;
+    /* position: absolute; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
     color: black;
 }
 
 /* Style the back side */
 .card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    padding: 1rem;
-    width: 32.4vh;
-    height: 48.8vh;
-    border-radius: 8px;
-    background-color: rgb(74, 51, 99);
+    border-radius: inherit;
+    top: 0px;
+    width: 100%;
+    height: 100%;
     color: white;
     transform: rotateY(180deg);
+}
+
+.card-back-design {
+    background-color: rgb(74, 51, 99);
+    width: 95%;
+    height: 97%;
+    border-radius: inherit;
 }
