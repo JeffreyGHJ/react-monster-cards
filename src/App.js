@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import GameBoard from './components/GameBoard';
 import PlayerControls from './components/PlayerControls';
-import CardGenerator from './util/CardGenerator.js';
+import AuthPage from './pages/AuthPage';
+import CardGenerator from './util/CardGenerator';
+import AppHeader from './components/AppHeader';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 let enemyList = CardGenerator();
 
@@ -102,18 +107,32 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
-      <GameBoard 
-        currentEnemy={currentEnemy} 
-        resetHandler={resetHandler}
-        playerHealth={playerHealth}
-        playerLevel={playerLevel}/>
-      <PlayerControls 
-        attackHandler={attackHandler} 
-        healHandler={healHandler}
-        playerHealth={playerHealth}
-        maxPlayerHealth={maxPlayerHealth}/>
+      <AppHeader />
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/play">
+            <GameBoard 
+              currentEnemy={currentEnemy} 
+              resetHandler={resetHandler}
+              playerHealth={playerHealth}
+              playerLevel={playerLevel}/>
+            <PlayerControls 
+              attackHandler={attackHandler} 
+              healHandler={healHandler}
+              playerHealth={playerHealth}
+              maxPlayerHealth={maxPlayerHealth}/>
+          </Route>
+          <Route path="/login">
+            <AuthPage />
+          </Route>
+          <Route path="*"> 
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 }
