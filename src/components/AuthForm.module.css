@@ -22,7 +22,35 @@
     margin: 1rem;
 }
 
-.input-group label{
+.input-group label {
     width: 2rem;
 }
 
+.button {
+    cursor: pointer;
+    font: inherit;
+    color: white;
+    background-color: #9312d4;
+    border: 1px solid #ac74d1;
+    border-radius: 4px;
+    padding: 0.5rem 2.5rem;
+    width: 70%;
+    margin: auto;
+}
+
+.button:hover {
+    background-color: #873abb;
+    border-color: #873abb;
+}
+
+.button:active {
+    background-color: #d99902;
+}
+
+.toggle {
+    margin-top: 1rem;
+    background-color: transparent;
+    color: #c28ee4;
+    border: none;
+    padding: 0.15rem 1.5rem;
+}
