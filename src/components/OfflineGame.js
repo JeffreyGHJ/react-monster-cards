@@ -1,44 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import GameBoard from './GameBoard';
 import PlayerControls from './PlayerControls';
-import CardGenerator from '../util/CardGenerator';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMaxPlayerHealth, decreaseHealthBy, increaseHealthBy, increaseMaxHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth } from '../store/slices/playerSlice';
-
-let enemyList = CardGenerator();
+import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../store/slices/enemyBoardSlice';
 
 const OfflineGame = (props) => {
   const playerHealth = useSelector((state) => state.player.playerHealth);
   const playerLevel = useSelector((state) => state.player.playerLevel);
   const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
+  const enemyList = useSelector((state) => state.enemyBoard.enemyDeck);
+  const currentEnemy = useSelector((state) => state.enemyBoard.currentEnemy);
   const dispatch = useDispatch();
 
-  //const [playerLevel, setPlayerLevel] = useState(1);
-  //const [playerHealth, setPlayerHealth] = useState(10);
-  //const [maxPlayerHealth, setMaxPlayerHealth] = useState(10);
-  const [currentEnemy, setCurrentEnemy] = useState(enemyList[0]);
-
   useEffect(() => {
-    console.log("Current Enemy health: " + currentEnemy.health);
-
-    if (currentEnemy.health <= 0) {
-      console.log("Enemy slain!");
-      enemyList.shift();
-      if (enemyList[0]) {
-        enemyList[0].health *= playerLevel;
-        enemyList[0].maxHealth *= playerLevel;
-        setCurrentEnemy(enemyList[0]);
+    console.log(enemyList);
+    console.log(currentEnemy)
+    if ( currentEnemy === null || currentEnemy.health <= 0 ) {
+      if ( enemyList.length > 0 ) {
+        console.log("setting next enemy");
+        dispatch(setCurrentEnemy(enemyList[0]));
+        dispatch(scaleCurrentEnemy(playerLevel));
+        dispatch(shiftEnemyDeck());
       } else {
-        setCurrentEnemy({});
+        console.log("setting empty enemy");
+        dispatch(setCurrentEnemy({}));
       }
     }
 
-  }, [currentEnemy.health, playerLevel]);
+  }, [currentEnemy, enemyList, playerLevel, dispatch]);
 
   useEffect(() => {
-    //console.log("maxPlayerHealth: " + maxPlayerHealth);
-    //setPlayerHealth(maxPlayerHealth);
-  }, [maxPlayerHealth]);
+    console.log("new maxPlayerHealth: " + maxPlayerHealth);
+    dispatch(setPlayerHealth(maxPlayerHealth));
+  }, [maxPlayerHealth, dispatch]);
 
   // Watch for lose condition here:
   useEffect(() => {
@@ -50,25 +45,12 @@ const OfflineGame = (props) => {
 
   const attackHandler = () => {
     let damage = Math.round(Math.random() * 3);
-    let newHealth = currentEnemy.health - damage > 0 ? currentEnemy.health - damage : 0;
-
-    setCurrentEnemy((prevState) => {
-      return {
-        ...prevState,
-        health: newHealth
-      };
-    });
-
-    console.log("Player attacks " + currentEnemy.name + " for " + damage + " hp");
+    dispatch(decreaseEnemyHealthBy(damage));
     attackPlayer();
   };
 
   const healHandler = () => {
-    let heal = Math.round(Math.random() * (3 + playerLevel));
-    /* if (heal + playerHealth > maxPlayerHealth) { heal = maxPlayerHealth - playerHealth };
-    setPlayerHealth((oldHealth) => {
-      return oldHealth + heal;
-    }); */
+    let heal = 10//Math.round(Math.random() * (3 + playerLevel));
     console.log("Player heals for " + heal + " hp");
     dispatch(increaseHealthBy(heal));
     attackPlayer();
@@ -77,36 +59,24 @@ const OfflineGame = (props) => {
   const attackPlayer = () => {
     let damage = Math.round(Math.random() * 2);
     console.log(currentEnemy.name + " attacks player for " + damage + " hp");
-    /* setPlayerHealth((oldHealth) => {
-      return oldHealth - damage;
-    }); */
     dispatch(decreaseHealthBy(damage));
   };
 
   const resetHandler = (status) => {
-    enemyList = CardGenerator();
-    setCurrentEnemy(enemyList[0]);
-
+    dispatch(setEnemyDeck());
+    dispatch(setFirstEnemy());
     if (status === 'continue') {
+      console.log("new game +")
       let newPlayerLevel = playerLevel + 1;
-      let healthBonus = 2 * newPlayerLevel;
-      enemyList[0].health *= newPlayerLevel;
-      enemyList[0].maxHealth *= newPlayerLevel;
-      /* setPlayerLevel((oldPlayerLevel) => {
-        return oldPlayerLevel + 1;
-      });
-      setMaxPlayerHealth((oldHealth) => {
-        return oldHealth + healthBonus;
-      }); */
       dispatch(incrementPlayerLevel());
-      dispatch(increaseMaxHealthBy(healthBonus));
+      dispatch(scaleCurrentEnemy(newPlayerLevel));
+      dispatch(increaseMaxHealthBy(newPlayerLevel * 2));
     } else if (status === 'reset') {
-      //setPlayerHealth(10);
+      console.log("resetting game")
       dispatch(setPlayerHealth(10));
-      //setMaxPlayerHealth(10);
       dispatch(setMaxPlayerHealth(10));
       dispatch(resetPlayerLevel());
-    } else {
+    } else {  // status not handled
       console.log("Error: resetHandler status not handled");
     }
   };

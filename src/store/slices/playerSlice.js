@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    maxPlayerHealth: 11,
-    playerHealth: 11,
-    playerLevel: 2,
+    maxPlayerHealth: 10,
+    playerHealth: 10,
+    playerLevel: 1,
 };
 
 export const playerSlice = createSlice ({
@@ -11,15 +11,19 @@ export const playerSlice = createSlice ({
     initialState,
     reducers: {
         setMaxPlayerHealth: (state, action) => {
+            console.log("Setting max player health");
             state.maxPlayerHealth = action.payload;
         },
         increaseMaxHealthBy: (state, action) => {
+            console.log("Increasing max player health");
             state.maxPlayerHealth += action.payload;
         },
         setPlayerHealth: (state, action) => {
+            console.log("setting player health");
             state.playerHealth = action.payload;
         },
         increaseHealthBy: (state, action) => {
+            console.log("increasing player health");
             if ( state.playerHealth + action.payload > state.maxPlayerHealth ) {
                 state.playerHealth = state.maxPlayerHealth;
             } else {
@@ -27,20 +31,20 @@ export const playerSlice = createSlice ({
             }
         },
         decreaseHealthBy: (state, action) => {
-            console.log("current health: " + state.playerHealth);
-            console.log("damage: " + action.payload);
             let damage = +action.payload;
             if ( state.playerHealth - damage < 0 ) {
                 state.playerHealth = 0;
             } else {
                 state.playerHealth -= damage;
             }
-            console.log("new current health: " + state.playerHealth);
+            //console.log("current player health: " + state.playerHealth);
         },
         resetPlayerLevel: (state) => {
+            console.log("resetting player level");
             state.playerLevel = 1;
         },
         incrementPlayerLevel: (state) => {
+            console.log("incrementing player level");
             state.playerLevel += 1;
         },
     },
@@ -53,7 +57,7 @@ export const {
     increaseHealthBy, 
     decreaseHealthBy, 
     resetPlayerLevel, 
-    incrementPlayerLevel
+    incrementPlayerLevel,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

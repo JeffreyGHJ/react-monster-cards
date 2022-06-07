@@ -13,7 +13,7 @@ const GameBoard = props => {
             <h1>You Lose!</h1>
             <button onClick={() => props.resetHandler('reset')}>Reset</button>
         </div>
-    } else if ( props.currentEnemy.health === undefined ) {
+    } else if ( props.currentEnemy.health === undefined || isNaN(props.currentEnemy.health) ) {
         board = 
             <div>
                 <h1>You Win!</h1>
