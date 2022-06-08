@@ -1,14 +1,20 @@
 import Link from 'next/link';
-import { useContext } from 'react';
-import AuthContext from '../../src/store/auth-context';
+import { useContext, useEffect, useState } from 'react';
+import AuthContext from '../../slices/auth-context';
 import classes from './MainNavigation.module.css';
 
 function MainNavigation(props) {
     const authCtx = useContext(AuthContext);
-    const isLoggedIn = authCtx.isLoggedIn;
+
     const logoutHandler = () => {
         authCtx.logout();
     }
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+    useEffect(() => {
+        setIsLoggedIn(authCtx.isLoggedIn);
+    }, [isLoggedIn, authCtx]);
 
     return (
         <header className={classes.header}>
