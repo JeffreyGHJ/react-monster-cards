@@ -1,0 +1,49 @@
+.header {
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(82, 0, 82);
+    padding: 0 10%;
+}
+
+.header nav {
+    height: 100%;
+}
+
+.header ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.header li {
+    margin: 0 1rem;
+    width: 5rem;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+    color: #cdcf76;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #cdcf76;
+}
+
+.header button {
+    font: inherit;
+    background-color: transparent;
+    /*border: 1px solid white;*/
+    color: white;
+    /*font-weight: bold;*/
+    padding: 0.5rem 1.5rem;
+    border: none;
+    cursor: pointer;
+}

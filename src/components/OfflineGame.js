@@ -30,7 +30,7 @@ const OfflineGame = (props) => {
 
   }, [currentEnemy, enemyList, playerLevel, dispatch]);
 
-  useEffect(() => {
+  useEffect(() => { // can probably weave this logic somewhere else and remove this effect
     console.log("new maxPlayerHealth: " + maxPlayerHealth);
     dispatch(setPlayerHealth(maxPlayerHealth));
   }, [maxPlayerHealth, dispatch]);

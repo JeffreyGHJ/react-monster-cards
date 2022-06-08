@@ -1,4 +1,4 @@
-import CardDetails from "../assets/CardDetails";
+import CardDetails from "../../public/assets/CardDetails";
 
 function CardGenerator() {
     let generatedCards = [];

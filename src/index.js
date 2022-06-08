@@ -17,5 +17,5 @@ root.render(
       </BrowserRouter>
     </AuthContextProvider>
   </Provider>
-);
+); 
 
