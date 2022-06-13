@@ -1,17 +1,14 @@
-import { useRef, useState, useContext } from 'react';
-import { useRouter } from 'next/router';
-import AuthContext, { LOGIN_URL, SIGN_UP_URL } from '../slices/auth-context';
+import { useRef, useState } from 'react'; 
 import classes from './AuthForm.module.css'
+import useAuth from '../hooks/use-auth';
 
 const AuthForm = ( props ) => {
-    const router = useRouter();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-    const authCtx = useContext(AuthContext);
-
     const [isLoginMode, setIsLoginMode] = useState(true); 
-    const [isLoading, setIsLoading] = useState(false);
+
+    const { isLoading, sendRequest: authenticateUser } = useAuth();
 
     const switchAuthModeHandler = () => {
         setIsLoginMode((prevMode) => {
@@ -20,53 +17,11 @@ const AuthForm = ( props ) => {
     }
 
     const submitHandler = ( event ) => {
+        console.log("Beginning user authentication...");
         event.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-
-        // To-Do: Validate email @ password inputs
-
-        setIsLoading(true);
-        let url;
-        if ( isLoginMode ) {    // Login mode
-            url = LOGIN_URL;
-        } else {                // Signup mode
-            url = SIGN_UP_URL;
-        }
-
-        fetch( url, {
-            method: 'POST',
-            body: JSON.stringify({
-                email: enteredEmail,
-                password: enteredPassword,
-                returnSecureToken: true
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(res => {
-            setIsLoading(false);
-            if (res.ok) {   // Return expected json
-                return res.json();
-            } else {        // Gather error report
-                return res.json().then(data => {
-                    let errorMessage = 'Authentication Failed! (Default)';
-                    if ( data && data.error && data.error.message ) {
-                        errorMessage = data.error.message;
-                    }
-                    throw new Error(errorMessage);
-                });
-            }
-        })
-        .then((data) => {   // Use successful Login json data
-            const expirationTime = new Date( new Date().getTime() + (+data.expiresIn * 1000) );
-            authCtx.login(data.idToken, expirationTime.toISOString());
-            router.replace('/');
-        })
-        .catch((err) => {   // Show error
-            alert(err.message);
-        });        
-        
+        authenticateUser( isLoginMode, enteredEmail, enteredPassword );
     }
 
     return (
@@ -98,4 +53,4 @@ const AuthForm = ( props ) => {
 
 };
 
-export default AuthForm;
+export default AuthForm; 

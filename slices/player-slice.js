@@ -47,6 +47,10 @@ export const playerSlice = createSlice ({
             console.log("incrementing player level");
             state.playerLevel += 1;
         },
+        setPlayerLevel: (state, action) => {
+            console.log("Setting player level to: " + action.payload);
+            state.playerLevel = action.payload;
+        }
     },
 });
 
@@ -58,6 +62,7 @@ export const {
     decreaseHealthBy, 
     resetPlayerLevel, 
     incrementPlayerLevel,
+    setPlayerLevel,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;
