@@ -4,6 +4,33 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/16/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Updated Profile Page:
+                    </h3>
+                    <ul>
+                        <li>
+                            Profile page now has an option to set or change a user's username.
+                        </li>
+                    </ul>
+                    <h3>
+                        Added Leaderboard Page:
+                    </h3>
+                    <ul>
+                        <li>
+                            Leaderboard shows all registered players including their Username and Player Level.
+                        </li>
+                        <li>
+                            If user has not set a Username then the leaderboard will show 'Anonymous'.
+                        </li>
+                        <li>
+                            Leaderboard is sorted according to highest Player Level.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/12/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
