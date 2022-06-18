@@ -27,7 +27,6 @@ const useDatabase = () => {
                 console.log(responseData);
                 console.log(responseData.playerLevel);
                 if (responseData.playerLevel) {   // Validate that it is a number
-                    console.log("test");
                     dispatch(setPlayerLevel(responseData.playerLevel));
                 }
             }

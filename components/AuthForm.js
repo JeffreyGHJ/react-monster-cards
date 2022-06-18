@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react'; 
-import classes from './AuthForm.module.css'
+import { useRouter } from 'next/router';
+import classes from './AuthForm.module.css';
 import useAuth from '../hooks/use-auth';
 
 const AuthForm = ( props ) => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-
-    const [isLoginMode, setIsLoginMode] = useState(true); 
+    const [isLoginMode, setIsLoginMode] = useState( useRouter().query.signup ? false : true ); 
 
     const { isLoading, sendRequest: authenticateUser } = useAuth();
 
@@ -54,3 +54,4 @@ const AuthForm = ( props ) => {
 };
 
 export default AuthForm; 
+

@@ -4,6 +4,52 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/17/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Changed Home Page
+                    </h3>
+                    <ul>
+                        <li>
+                            Added menu with controls that allow users to Login, Signup, or Play Demo.
+                        </li>
+                        <li>
+                            Added credits at bottom of the Home Page listing the tech stack used on this project.
+                        </li>
+                    </ul>
+                    <h3>
+                        Updated Signup/Login/Logout process
+                    </h3>
+                    <ul>
+                        <li>
+                            Clicking the 'Signup' button will redirect to the login page but it will now be in Signup mode.
+                        </li>
+                        <li>
+                            Logging out will redirect the user back to the Home Page.
+                        </li>
+                    </ul>
+                    <h3>
+                        Moved Updates List
+                    </h3>
+                    <ul>
+                        <li>
+                            Updates List now found on the dedicated 'Updates' page.
+                        </li>
+                    </ul>
+                    <h3>
+                        Updated various styles for responsiveness
+                    </h3>
+                    <ul>
+                        <li>
+                            Changed Main Navigation button styles to resize with viewport and avoid overlap.
+                        </li>
+                        <li>
+                            Changed Home Page styles to fit new Menu and Credits section in any viewport size.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/16/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>

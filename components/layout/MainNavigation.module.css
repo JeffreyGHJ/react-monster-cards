@@ -1,8 +1,8 @@
 .header {
-    width: 100%;
-    height: 5rem;
+    width: 100vw;
+    height: 5vh;
     background-color: rgb(82, 0, 82);
-    padding: 0 10%;
+    /* padding: 0 5%; */
 }
 
 .header nav {
@@ -16,16 +16,18 @@
     padding: 0;
     margin: 0;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .header li {
-    margin: 1rem;
-    width: 6rem;
+    font-size: 2vmin;
+    margin: 2vw;
+    width: 8vw;
     text-align: center;
 }
 
 .header a {
+    scale: 100%;
     color: white;
     text-decoration: none;
 }
@@ -34,8 +36,8 @@
 .header a:active,
 .header a.active {
     color: #cdcf76;
-    padding-bottom: 0.25rem;
-    border-bottom: 4px solid #cdcf76;
+    padding-bottom: 0.25vh;
+    border-bottom: .3vh solid #cdcf76;
 }
 
 .header button {
@@ -44,7 +46,7 @@
     /*border: 1px solid white;*/
     color: white;
     /*font-weight: bold;*/
-    padding: 0.5rem 1.5rem;
+    padding: 0.5vh 1.5vw;
     border: none;
     cursor: pointer;
 }

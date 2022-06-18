@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/router';
 import { setPlayerLevel } from "./player-slice";
 import useDatabase from "../hooks/use-database";
 
@@ -47,12 +48,15 @@ const retrieveStoredToken = () => {
 }
 
 export const AuthContextProvider = (props) => {
+    const router = useRouter();
     const dispatch = useDispatch();
     const { loadPlayer } = useDatabase();
 
     let tokenData;
     let initialToken;
     let initialUid;
+
+    console.log("AUTH CTX RERENDER");
 
     useEffect(() => {
         if (ISBROWSER) {
@@ -98,6 +102,8 @@ export const AuthContextProvider = (props) => {
         if ( logoutTimer ) {
             clearTimeout(logoutTimer);
         }
+
+        router.replace('/');
     }, []);
 
     async function loginHandler(token, expirationTime, localId) {

@@ -43,6 +43,11 @@ function MainNavigation(props) {
                             Leaderboard
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/updates">
+                            Updates
+                        </Link>
+                    </li>
                     {!isLoggedIn && (
                         <li>
                             <Link href="/login">

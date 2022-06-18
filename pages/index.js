@@ -1,12 +1,14 @@
 import WelcomeMessage from "../components/WelcomeMessage";
-import UpdateList from "../components/UpdateList";
+import HomeMenu from "../components/HomeMenu";
+import AppCredits from "../components/AppCredits";
 
 function HomePage(props) {
     return (
-        <>
+        <div style={{display: 'flex', flexDirection: 'column', height: '95vh'}}>
             <WelcomeMessage />
-            <UpdateList />
-        </>
+            <HomeMenu />
+            <AppCredits />
+        </div>
     );
 }
 
