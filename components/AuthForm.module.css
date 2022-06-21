@@ -4,7 +4,7 @@
     margin: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
-    width: 30vw;
+    width: 50vw;
     background-color: rgb(96, 0, 96);
     color: white;
     margin-top: 15vh;
@@ -13,16 +13,44 @@
 .inputs {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-bottom: 3rem;
 }
 
 .input-group {
+    flex-direction: row;
+    width: 70%;
+    height: 1.6rem;
+    color: white;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 1rem;
 }
 
+.input-group input{
+    padding-left: 1vw;
+    width: 100%;
+    border: none;
+    border-radius: 0px 4px 4px 0px;
+}
+
+
+.input-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#422740;
+    border-radius: 4px 0px 0px 4px;
+    width: 3vw;
+}
+
+.input-decoration-outter {
+    display: contents;
+}
+
 .input-group label {
+    display: flex;
+    flex-direction: column;
     width: 2rem;
 }
 
@@ -33,7 +61,7 @@
     background-color: #9312d4;
     border: 1px solid #ac74d1;
     border-radius: 4px;
-    padding: 0.5rem 2.5rem;
+    padding: 1vmin;
     width: 70%;
     margin: auto;
 }
@@ -52,5 +80,5 @@
     background-color: transparent;
     color: #c28ee4;
     border: none;
-    padding: 0.15rem 1.5rem;
+    padding: 1vmin;
 }

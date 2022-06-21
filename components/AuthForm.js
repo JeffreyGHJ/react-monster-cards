@@ -1,12 +1,14 @@
-import { useRef, useState } from 'react'; 
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import classes from './AuthForm.module.css';
 import useAuth from '../hooks/use-auth';
+import AtSignSvg from '../public/assets/icons/AtSignSvg.js';
+import LockSvg from '../public/assets/icons/LockSvg';
 
-const AuthForm = ( props ) => {
+const AuthForm = (props) => {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
-    const [isLoginMode, setIsLoginMode] = useState( useRouter().query.signup ? false : true ); 
+    const [isLoginMode, setIsLoginMode] = useState(useRouter().query.signup ? false : true);
 
     const { isLoading, sendRequest: authenticateUser } = useAuth();
 
@@ -16,12 +18,12 @@ const AuthForm = ( props ) => {
         });
     }
 
-    const submitHandler = ( event ) => {
+    const submitHandler = (event) => {
         console.log("Beginning user authentication...");
         event.preventDefault();
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
-        authenticateUser( isLoginMode, enteredEmail, enteredPassword );
+        authenticateUser(isLoginMode, enteredEmail, enteredPassword);
     }
 
     return (
@@ -31,11 +33,17 @@ const AuthForm = ( props ) => {
                 <form onSubmit={submitHandler}>
                     <div className={classes.inputs}>
                         <div className={classes['input-group']}>
-                            <label htmlFor='email'>Email</label>
+                            <div className={classes['input-decoration-outter']}>
+                                <div className={classes['input-decoration']}>
+                                    <AtSignSvg height="80%" width="80%" />
+                                </div>
+                            </div>
                             <input id='email' type='email' placeholder='Email' ref={emailInputRef}></input>
                         </div>
                         <div className={classes['input-group']}>
-                            <label htmlFor='password'>Password</label>
+                            <div className={classes['input-decoration']}>
+                                <LockSvg height="80%" width="80%" />
+                            </div>
                             <input id='password' type='password' placeholder='Password' ref={passwordInputRef}></input>
                         </div>
                         {!isLoading && <button className={classes.button}>
@@ -53,5 +61,5 @@ const AuthForm = ( props ) => {
 
 };
 
-export default AuthForm; 
+export default AuthForm;
 
