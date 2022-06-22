@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
+import { useContext } from "react";
 import { useDispatch } from "react-redux";
+import AuthContext from "../slices/auth-context";
 import { setPlayerLevel } from "../slices/player-slice";
 
+
 const useDatabase = () => {
+    const authCtx = useContext(AuthContext);
     const dispatch = useDispatch();
     const router = useRouter();
+
     const loadPlayer = async (uid) => {
         console.log("sending loadPlayer request in 'useDatabase' hook:");
         try {
@@ -62,8 +67,8 @@ const useDatabase = () => {
         }
     }
 
-    // for first time signup - different that the function in OfflineGame.js
-    const updatePlayerData = async (uid) => {
+    // for first time signup - different than updatePlayerData
+    const createPlayerData = async (uid) => {
         if (uid) {
             console.log('updating player data on server');
             try {
@@ -72,6 +77,33 @@ const useDatabase = () => {
                     body: JSON.stringify({
                         uid: uid,
                         playerLevel: 1,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+
+        } else {
+            console.log('no uid');
+        }
+    }
+
+    const updatePlayerData = async (newLevel) => { 
+        const uid = authCtx.uid;
+        if (uid) {
+            console.log('updating player data on server');
+            try {
+                const response = await fetch('/api/update-player-data', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        uid: uid,
+                        playerLevel: newLevel,
                     }),
                     headers: {
                         'Content-Type': 'application/json'
@@ -118,6 +150,7 @@ const useDatabase = () => {
     return {
         loadPlayer,
         getAllPlayers,
+        createPlayerData,
         updatePlayerData,
         updateUsername
     };

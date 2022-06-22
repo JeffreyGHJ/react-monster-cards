@@ -4,10 +4,12 @@ import AuthContext from "../slices/auth-context";
 import useDatabase from "./use-database";
 
 const useAuth = () => {
-    const router = useRouter();
+    
     const [isLoading, setIsLoading] = useState(false);
-    const { updatePlayerData } = useDatabase();
+    
+    const { createPlayerData } = useDatabase();
     const authCtx = useContext(AuthContext);
+    const router = useRouter();
 
     const sendRequest = async (isLoginMode, enteredEmail, enteredPassword) => {
         setIsLoading(true);
@@ -35,8 +37,10 @@ const useAuth = () => {
                 
                 if ( !isLoginMode ) {
                     console.log("Adding db entry for new user...");
-                    await updatePlayerData(responseData.localId);
+                    await createPlayerData(responseData.localId);
                 }
+
+                // TO-DO: IF ERROR FROM CREATE USER, THEN DO NOT PERFORM LOGIN
 
                 authCtx.login(responseData.idToken, expirationTime.toISOString(), responseData.localId);
 

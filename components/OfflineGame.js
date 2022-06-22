@@ -1,53 +1,33 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import GameBoard from './GameBoard';
 import PlayerControls from './PlayerControls';
 import { useDispatch, useSelector } from 'react-redux';
-import { setMaxPlayerHealth, decreaseHealthBy, increaseHealthBy, increaseMaxHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth } from '../slices/player-slice';
-import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
-import AuthContext from '../slices/auth-context';
+import { decreaseHealthBy, increaseHealthBy, setPlayerHealth } from '../slices/player-slice';
+import { decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
+import useGameManager from '../hooks/use-game-manager';
 
 const OfflineGame = (props) => {
-  const authCtx = useContext(AuthContext);
-
   const playerHealth = useSelector((state) => state.player.playerHealth);
   const playerLevel = useSelector((state) => state.player.playerLevel);
   const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
-  const enemyList = useSelector((state) => state.enemyBoard.enemyDeck);
   const currentEnemy = useSelector((state) => state.enemyBoard.currentEnemy);
+  const { resetGame, updateCurrentEnemy } = useGameManager();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(enemyList);
-    console.log(currentEnemy)
-    if (currentEnemy === null || currentEnemy.health <= 0) {
-      if (enemyList.length > 0) {
-        console.log("setting next enemy");
-        dispatch(setCurrentEnemy(enemyList[0]));
-        dispatch(scaleCurrentEnemy(playerLevel));
-        dispatch(shiftEnemyDeck());
-      } else {
-        console.log("setting empty enemy");
-        dispatch(setCurrentEnemy({}));
-      }
-    }
+    updateCurrentEnemy();
+  }, [currentEnemy]);
 
-  }, [currentEnemy, enemyList, playerLevel, dispatch]);
-
-  useEffect(() => { // can probably weave this logic somewhere else and remove this effect
+  useEffect(() => { 
     console.log("new maxPlayerHealth: " + maxPlayerHealth);
     dispatch(setPlayerHealth(maxPlayerHealth));
   }, [maxPlayerHealth, dispatch]);
 
-  // Watch for lose condition here:
-  useEffect(() => {
+ /*  useEffect(() => { 
     console.log("Current player health: " + playerHealth);
-    if (playerHealth <= 0) {
-      console.log("Loser!");
-    }
-  }, [playerHealth]);
+  }, [playerHealth]); */
 
   const attackHandler = () => {
-    console.log(authCtx.uid);
     let damage = Math.round(Math.random() * 3);
     dispatch(decreaseEnemyHealthBy(damage));
     attackPlayer();
@@ -66,66 +46,22 @@ const OfflineGame = (props) => {
     dispatch(decreaseHealthBy(damage));
   };
 
-  async function updatePlayerData(newLevel) {  // Move to playerSlice + authUserSlice
-    const uid = authCtx.uid;
-    if (uid) {
-      console.log('updating player data on server');
-      try {
-        const response = await fetch('/api/update-player-data', {
-          method: 'POST',
-          body: JSON.stringify({
-            uid: uid,
-            playerLevel: newLevel,
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-
-        const data = await response.json();
-        console.log(data);
-      } catch (e) {
-        console.log(e);
-      }
-
-    } else {
-      console.log('no uid');
-    }
-  }
-
-  const resetHandler = (status) => {  // Move to gameSlice
-    dispatch(setEnemyDeck());
-    dispatch(setFirstEnemy());
-    if (status === 'continue') {
-      console.log("new game +")
-      let newPlayerLevel = playerLevel + 1;
-      dispatch(incrementPlayerLevel());
-      dispatch(scaleCurrentEnemy(newPlayerLevel));
-      dispatch(increaseMaxHealthBy(newPlayerLevel * 2));
-      updatePlayerData(newPlayerLevel);
-    } else if (status === 'reset') {
-      console.log("resetting game")
-      dispatch(setPlayerHealth(10));
-      dispatch(setMaxPlayerHealth(10));
-      dispatch(resetPlayerLevel());
-      updatePlayerData(1);
-    } else {  // status not handled
-      console.log("Error: resetHandler status not handled");
-    }
+  const resetHandler = (status) => {
+    resetGame(status);
   };
 
   return (
     <>
       <GameBoard
         currentEnemy={currentEnemy}
-        resetHandler={resetHandler}
         playerHealth={playerHealth}
-        playerLevel={playerLevel} />
+        playerLevel={playerLevel}
+        resetHandler={resetHandler} />
       <PlayerControls
-        attackHandler={attackHandler}
-        healHandler={healHandler}
         playerHealth={playerHealth}
-        maxPlayerHealth={maxPlayerHealth} />
+        maxPlayerHealth={maxPlayerHealth}
+        attackHandler={attackHandler}
+        healHandler={healHandler} />
     </>
   );
 };
