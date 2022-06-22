@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import CardGenerator from '../util/CardGenerator';
 
-let cards = CardGenerator()
+let cards = CardGenerator();
 let startingEnemy = cards.shift();
 
-const initialState = {
+const initialState = { 
     enemyDeck: cards,
     currentEnemy: startingEnemy,
 };

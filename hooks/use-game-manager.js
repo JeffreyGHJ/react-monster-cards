@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setMaxPlayerHealth, increaseMaxHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth } from '../slices/player-slice';
-import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy } from '../slices/enemy-board-slice';
+import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth } from '../slices/player-slice';
+import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
 import useDatabase from "./use-database";
 
 const useGameManager = () => {
     const enemyList = useSelector((state) => state.enemyBoard.enemyDeck);
     const currentEnemy = useSelector((state) => state.enemyBoard.currentEnemy);
     const playerLevel = useSelector((state) => state.player.playerLevel);
+    const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
     const { updatePlayerData } = useDatabase();
     const dispatch = useDispatch();
 
-    const resetGame = (status) => {  // Move to gameSlice
+    const resetGame = (status) => {
         dispatch(setEnemyDeck());
         dispatch(setFirstEnemy());
         if (status === 'continue') {
@@ -47,9 +48,34 @@ const useGameManager = () => {
         }
     };
 
+    const setPlayerHealthToMax = () => {
+        console.log("new maxPlayerHealth: " + maxPlayerHealth);
+        dispatch(setPlayerHealth(maxPlayerHealth));
+    }
+
+    const executeAttack = () => {
+        let damage = Math.round(Math.random() * 3);
+        dispatch(decreaseEnemyHealthBy(damage));
+        receiveAttack();
+    }
+
+    const executeHeal = () => {
+        let heal = Math.round(Math.random() * (3 + playerLevel));
+        dispatch(increaseHealthBy(heal));
+        receiveAttack();
+    }
+
+    const receiveAttack = () => {   // HELPER FUNCTION - NOT RETURNED
+        let damage = Math.round(Math.random() * 2);
+        dispatch(decreaseHealthBy(damage));
+    }
+
     return {
         resetGame,
-        updateCurrentEnemy
+        updateCurrentEnemy,
+        setPlayerHealthToMax,
+        executeAttack,
+        executeHeal,
     };
 };
 

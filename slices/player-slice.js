@@ -23,7 +23,7 @@ export const playerSlice = createSlice ({
             state.playerHealth = action.payload;
         },
         increaseHealthBy: (state, action) => {
-            console.log("increasing player health");
+            console.log("Player heals for " + action.payload + " hp");
             if ( state.playerHealth + action.payload > state.maxPlayerHealth ) {
                 state.playerHealth = state.maxPlayerHealth;
             } else {
@@ -32,12 +32,13 @@ export const playerSlice = createSlice ({
         },
         decreaseHealthBy: (state, action) => {
             let damage = +action.payload;
+            console.log("player is attacked for " + damage + " hp");
             if ( state.playerHealth - damage < 0 ) {
                 state.playerHealth = 0;
             } else {
                 state.playerHealth -= damage;
             }
-            //console.log("current player health: " + state.playerHealth);
+            console.log("current player health: " + state.playerHealth);
         },
         resetPlayerLevel: (state) => {
             console.log("resetting player level");
