@@ -4,6 +4,8 @@ const initialState = {
     maxPlayerHealth: 10,
     playerHealth: 10,
     playerLevel: 1,
+    turn: 1,
+    lastSpec: null,
 };
 
 export const playerSlice = createSlice ({
@@ -51,6 +53,19 @@ export const playerSlice = createSlice ({
         setPlayerLevel: (state, action) => {
             console.log("Setting player level to: " + action.payload);
             state.playerLevel = action.payload;
+        },
+        setLastSpec: (state, action) => {
+            if (action.payload) {
+                console.log("clearing last spec");
+                state.lastSpec = null;
+            } else {
+                console.log("Setting last special attack occurrence to turn: " + state.turn);
+                state.lastSpec = state.turn;
+            }
+        },
+        incrementTurn: (state) => {
+            state.turn += 1;
+            console.log("Current turn: " + state.turn);
         }
     },
 });
@@ -64,6 +79,8 @@ export const {
     resetPlayerLevel, 
     incrementPlayerLevel,
     setPlayerLevel,
+    setLastSpec,
+    incrementTurn,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

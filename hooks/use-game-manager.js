@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth } from '../slices/player-slice';
+import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn } from '../slices/player-slice';
 import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
 import useDatabase from "./use-database";
 
@@ -14,6 +14,7 @@ const useGameManager = () => {
     const resetGame = (status) => {
         dispatch(setEnemyDeck());
         dispatch(setFirstEnemy());
+        dispatch(setLastSpec(true));
         if (status === 'continue') {
             console.log("new game +")
             let newPlayerLevel = playerLevel + 1;
@@ -27,6 +28,9 @@ const useGameManager = () => {
             dispatch(setMaxPlayerHealth(10));
             dispatch(resetPlayerLevel());
             updatePlayerData(1);
+        } else if (status === 'surrender') {
+            console.log('surrendering battle');
+            dispatch(setPlayerHealth(maxPlayerHealth));
         } else {  // status not handled
             console.log("Error: resetHandler status not handled");
         }
@@ -59,6 +63,13 @@ const useGameManager = () => {
         receiveAttack();
     }
 
+    const executeSpecialAttack = () => {
+        let damage = Math.round(Math.random() * 5);
+        dispatch(decreaseEnemyHealthBy(damage));
+        dispatch(setLastSpec());
+        receiveAttack();
+    }
+
     const executeHeal = () => {
         let heal = Math.round(Math.random() * (3 + playerLevel));
         dispatch(increaseHealthBy(heal));
@@ -68,6 +79,7 @@ const useGameManager = () => {
     const receiveAttack = () => {   // HELPER FUNCTION - NOT RETURNED
         let damage = Math.round(Math.random() * 2);
         dispatch(decreaseHealthBy(damage));
+        dispatch(incrementTurn());
     }
 
     return {
@@ -75,6 +87,7 @@ const useGameManager = () => {
         updateCurrentEnemy,
         setPlayerHealthToMax,
         executeAttack,
+        executeSpecialAttack,
         executeHeal,
     };
 };
