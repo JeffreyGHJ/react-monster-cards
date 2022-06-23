@@ -4,6 +4,46 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/22/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Implemented Remaining Player Abilities
+                    </h3>
+                    <ul>
+                        <li>
+                            Implemented 'Special Attack': player has the chance to deal increased damage - ability will then disable to cooldown for a few turns.
+                        </li>
+                        <li>
+                            Implemented 'Surrender': player can reset the current battle conditions without resetting their player level back to 1.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
+                <h1>Update: 6/21/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Updated Site Page Styles
+                    </h3>
+                    <ul>
+                        <li>
+                            Changed css styling on 'Home' and 'Login' page.
+                        </li>
+                        <li>
+                            Updated pages have improved look on mobile devices.
+                        </li>
+                    </ul>
+                    <h3>
+                        Added SVGs to Login Page
+                    </h3>
+                    <ul>
+                        <li>
+                            Login page now has SVG decorations next to the text input fields.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/17/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
