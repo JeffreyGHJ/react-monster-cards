@@ -1,0 +1,70 @@
+.player-abilities {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    width: 30%;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding-bottom: .6vmax;
+}
+
+.control-panel button {
+    font: inherit;
+    font-size: 1vmax;
+    border: 1px solid #88005b;
+    background-color: #88005b;
+    color: white;
+    padding-top: .5vmax;
+    padding-bottom: .5vmax;
+    border-radius: 12px;
+    margin: .4rem;
+    width: 80%;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:focus {
+    outline: none;
+}
+
+.control-panel button:hover {
+    background-color: #af0a78;
+    border-color: #af0a78;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:active {
+    background-color: #600b44;
+    border-color: #af0a78;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    box-shadow: none;
+    color: #3f3f3f;
+    cursor: not-allowed;
+}
+
+.healthbar {
+    width: 50%;
+    height: 40px;
+    border: 1px solid #575757;
+    margin: .6rem 0;
+    background: #fde5e5;
+}
+
+.healthbar__value {
+    background-color: #00a876;
+    width: 100%;
+    height: 100%;
+}

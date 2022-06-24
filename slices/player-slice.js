@@ -6,6 +6,7 @@ const initialState = {
     playerLevel: 1,
     turn: 1,
     lastSpec: null,
+    username: 'Guest',
 };
 
 export const playerSlice = createSlice ({
@@ -66,6 +67,10 @@ export const playerSlice = createSlice ({
         incrementTurn: (state) => {
             state.turn += 1;
             console.log("Current turn: " + state.turn);
+        },
+        setUsername: (state, action) => {
+            console.log("setting username to: " + action.payload);
+            state.username = action.payload;
         }
     },
 });
@@ -81,6 +86,7 @@ export const {
     setPlayerLevel,
     setLastSpec,
     incrementTurn,
+    setUsername,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

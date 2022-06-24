@@ -1,55 +1,44 @@
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import useGameManager from '../hooks/use-game-manager';
+import GameOptions from './GameOptions';
+import PlayerAbilities from './PlayerAbilities';
 import classes from './PlayerControls.module.css';
+import PlayerInfo from './PlayerInfo';
 
-const playerControls = `${classes['player-controls']} container`
-const SPEC_COOLDOWN = 5;
+const playerControls = `${classes['player-controls']} container`;
 
-const PlayerControls = (props) => {
-    const playerHealth = useSelector((state) => state.player.playerHealth);
+const getPercentageString = (playerHealth, maxPlayerHealth) => {
+    let percent = (playerHealth / maxPlayerHealth) * 100;
+    let result = percent + '%';
+    return { width: result.toString() };
+}
+
+const PlayerControls = () => {
+    const playerHealth = useSelector(state => state.player.playerHealth);
     const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
-    const lastSpec = useSelector((state) => state.player.lastSpec);
-    const turn = useSelector((state) => state.player.turn);
-    const { executeSpecialAttack, resetGame } = useGameManager();
-
-    const [specialOnCooldown, setSpecialOnCooldown] = useState(false);
-
-    useEffect(() => {
-        setSpecialOnCooldown(lastSpec !== null && turn - lastSpec <= SPEC_COOLDOWN);
-    }, [lastSpec, turn])
+    const gameStatus = useSelector(state => state.game.gameStatus);
 
     const currentHealthPercent = () => {
-        let percent = (playerHealth / maxPlayerHealth) * 100;
-        let result = percent + '%';
-        return { width: result.toString() };
-    }
-
-    const specialAttackHandler = () => {
-        executeSpecialAttack();
+        return getPercentageString(playerHealth, maxPlayerHealth);
     };
-
-    const surrenderHandler = () => {
-        resetGame('surrender');
-    }
 
     return (
         <div className={playerControls}>
             <h2>Player Controls</h2>
-            <div className={classes['control-panel']}>
-                <button id='attack-button' onClick={props.attackHandler}>
-                    Attack
-                </button>
-                <button id='special-attack-button' onClick={specialAttackHandler} disabled={specialOnCooldown}>
-                    Special Attack
-                </button>
-                <button id='heal-button' onClick={props.healHandler}>
-                    Heal
-                </button>
-                <button id='surrender-button' onClick={surrenderHandler}>
-                    Surrender
-                </button>
-                <h4>HP: {playerHealth}</h4>
+            <div className={classes['control-group-row']}>
+                <PlayerInfo />
+                <div className={classes['control-group-row']}>
+                    {gameStatus === 'playing' &&
+                        <PlayerAbilities />
+                    }
+                    {gameStatus !== 'playing' &&
+                        <GameOptions />
+                    }
+                </div>
+                <div id='spacer' style={{width: '20%'}}>
+                </div>
+            </div>
+            <div className={classes['module-container']} style={{ width: '65%' }}>
+                <div>HP: {playerHealth}</div>
                 <div className={classes.healthbar}>
                     <div className={classes.healthbar__value} style={currentHealthPercent()}></div>
                 </div>

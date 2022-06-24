@@ -1,0 +1,82 @@
+.game-options {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    margin: 1vmin;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-panel button {
+    font: inherit;
+/*     border: 1px solid #88005b;
+    background-color: #88005b; */
+    color: white;
+    padding: .6rem 2rem;
+    border-radius: 12px;
+    margin: .4rem;
+    width: 12rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:focus {
+    outline: none;
+}
+
+.control-panel button:hover {
+    /* background-color: #af0a78;
+    border-color: #af0a78; */
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:active {
+    /* background-color: #600b44;
+    border-color: #af0a78; */
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    box-shadow: none;
+    color: #3f3f3f;
+    cursor: not-allowed;
+}
+
+.continue-button {
+    background-color: darkgoldenrod;
+    border: 1px solid darkgoldenrod;
+}
+
+.continue-button:hover {
+    background-color: rgb(220, 163, 18);
+    border: 1px solid rgb(220, 163, 18);
+}
+
+.continue-button:active {
+    background-color: rgb(116, 89, 21);
+    border: 1px solid rgb(116, 89, 21);
+}
+
+.retry-button {
+    background-color:crimson;
+    border: 1px solid crimson;
+}
+
+.retry-button:hover {
+    background-color: rgb(255, 34, 78);
+    border: 1px solid rgb(255, 34, 78);
+}
+
+.retry-button:active {
+    background-color: rgb(155, 15, 43);
+    border: 1px solid rgb(155, 15, 43);
+}

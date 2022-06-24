@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
 import { setPlayerLevel } from "./player-slice";
 import useDatabase from "../hooks/use-database";

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import AuthContext from "../slices/auth-context";
-import { setPlayerLevel } from "../slices/player-slice";
+import { setPlayerLevel, setUsername } from "../slices/player-slice";
 
 
 const useDatabase = () => {
@@ -33,6 +33,11 @@ const useDatabase = () => {
                 console.log(responseData.playerLevel);
                 if (responseData.playerLevel) {   // Validate that it is a number
                     dispatch(setPlayerLevel(responseData.playerLevel));
+                }
+                if (responseData.username) {
+                    dispatch(setUsername(responseData.username));
+                } else {
+                    dispatch(setUsername('Anonymous'));
                 }
             }
         } catch (error) {

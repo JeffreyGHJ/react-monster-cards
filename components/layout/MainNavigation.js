@@ -20,14 +20,14 @@ function MainNavigation(props) {
         <header className={classes.header}>
             <div id="logo"></div>
             <nav>
-                <ul>
+                <ul> 
                     <li>
                         <Link href="/">
                             Home
                         </Link>
                     </li>
                     <li>
-                        <Link href="/playGameOffline">
+                        <Link href="/playGame">
                             Play
                         </Link>
                     </li>

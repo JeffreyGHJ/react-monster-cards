@@ -1,0 +1,19 @@
+.player-info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    width: 20%;
+    /* border: solid red 1px; */
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-level {
+    font-weight: bolder;
+    margin-bottom: 1vh;
+}

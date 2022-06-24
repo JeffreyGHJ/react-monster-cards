@@ -31,8 +31,8 @@ const HomeMenu = (props) => {
                                 Signup
                             </button>
                         </Link>
-                        <Link href='/playGameOffline'>
-                            <button className={classes['demo-button']} href='/playGameOffline'>
+                        <Link href='/playGame'>
+                            <button className={classes['demo-button']} href='/playGame'>
                                 Play Demo
                             </button>
                         </Link>
@@ -40,8 +40,8 @@ const HomeMenu = (props) => {
                 )}
                 {isLoggedIn && (
                     <>
-                        <Link href='/playGameOffline'>
-                            <button className={classes['play-button']} href='/playGameOffline'>
+                        <Link href='/playGame'>
+                            <button className={classes['play-button']} href='/playGame'>
                                 Play Game
                             </button>
                         </Link>
