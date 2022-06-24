@@ -1,4 +1,4 @@
-import MainGame from "../components/MainGame";
+import MainGame from "../components/game/MainGame.js";
 
 const playGame = (props) => {
     return (

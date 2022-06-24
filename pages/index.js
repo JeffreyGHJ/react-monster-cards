@@ -1,6 +1,6 @@
-import WelcomeMessage from "../components/WelcomeMessage";
-import HomeMenu from "../components/HomeMenu";
-import AppCredits from "../components/AppCredits";
+import WelcomeMessage from "../components/home/WelcomeMessage";
+import HomeMenu from "../components/home/HomeMenu";
+import AppCredits from "../components/home/AppCredits";
 
 function HomePage(props) {
     return (

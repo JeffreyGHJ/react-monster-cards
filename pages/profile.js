@@ -1,4 +1,4 @@
-import ProfileOptions from "../components/ProfileOptions";
+import ProfileOptions from "../components/profile/ProfileOptions";
 
 function profile(props) {
     return (

@@ -1,8 +1,8 @@
 import classes from './AppCredits.module.css';
 import Image from 'next/image';
-import reactIcon from '../public/assets/icons/React-icon.png';
-import firebaseLogo from '../public/assets/icons/Firebase-Logo.png';
-import nextjsLogo from '../public/assets/icons/Nextjs-Logo.png';
+import reactIcon from '../../public/assets/icons/React-icon.png';
+import firebaseLogo from '../../public/assets/icons/Firebase-Logo.png';
+import nextjsLogo from '../../public/assets/icons/Nextjs-Logo.png';
 
 const AppCredits = (props) => {
     return (

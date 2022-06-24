@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import useGameManager from '../hooks/use-game-manager';
+import useGameManager from '../../hooks/use-game-manager';
 import classes from './PlayerAbilities.module.css';
 
 const SPEC_COOLDOWN = 5;

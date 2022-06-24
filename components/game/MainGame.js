@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import useGameManager from '../hooks/use-game-manager';
+import useGameManager from '../../hooks/use-game-manager';
 import GameBoard from './GameBoard';
 import PlayerControls from './PlayerControls'; 
 import classes from './MainGame.module.css';

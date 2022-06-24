@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { useSelector } from "react-redux";
-import useDatabase from "../hooks/use-database";
-import AuthContext from "../slices/auth-context";
+import useDatabase from "../../hooks/use-database";
+import AuthContext from "../../slices/auth-context";
 import classes from './ProfileOptions.module.css';
 
 const ProfileOptions = (props) => {
@@ -14,10 +14,6 @@ const ProfileOptions = (props) => {
         event.preventDefault();
         const enteredUsername = usernameRef.current.value;
         console.log("Updating username to: " + enteredUsername);
-        // make call to server through hook
-        // component -> hook -> api route -> firebase
-        // need uid
-        // update-player-name
         updateUsername(authCtx.uid, playerLevel, enteredUsername);
     }
 

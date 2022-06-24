@@ -1,4 +1,4 @@
-import UpdateList from "../components/UpdateList";
+import UpdateList from "../components/updates/UpdateList";
 
 const updates = () => {
     return (

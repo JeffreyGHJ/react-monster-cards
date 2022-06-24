@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LeaderboardList from "../components/LeaderboardList";
+import LeaderboardList from "../components/leaderboard/LeaderboardList";
 import useDatabase from "../hooks/use-database";
 
 function Leaderboard(props)  {

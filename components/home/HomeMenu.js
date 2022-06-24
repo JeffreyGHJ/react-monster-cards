@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useContext, useState, useEffect } from "react";
-import AuthContext from "../slices/auth-context";
+import AuthContext from "../../slices/auth-context";
 import classes from './HomeMenu.module.css'
 
 const HomeMenu = (props) => {

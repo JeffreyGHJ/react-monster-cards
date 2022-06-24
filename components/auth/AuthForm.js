@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import classes from './AuthForm.module.css';
-import useAuth from '../hooks/use-auth';
-import AtSignSvg from '../public/assets/icons/AtSignSvg.js';
-import LockSvg from '../public/assets/icons/LockSvg';
+import useAuth from '../../hooks/use-auth';
+import AtSignSvg from '../../public/assets/icons/AtSignSvg.js';
+import LockSvg from '../../public/assets/icons/LockSvg';
 
 const AuthForm = (props) => {
     const emailInputRef = useRef();
