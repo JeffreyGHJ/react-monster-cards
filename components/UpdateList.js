@@ -4,6 +4,28 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/23/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Updated Main Game Interface
+                    </h3>
+                    <ul>
+                        <li>
+                            Player Abilities will be hidden upon defeat or victory and game options to 'Continue' or 'Retry' will be shown instead.
+                        </li>
+                        <li>
+                            Added 'Player Info' component to bottom section of the game screen which includes the player's Username and Player Level.
+                        </li>
+                        <li>
+                            Removed duplicate 'Player Level' component from upper section of the game screen.
+                        </li>
+                        <li>
+                            Restyled various components and elements for improved responsiveness.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/22/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
