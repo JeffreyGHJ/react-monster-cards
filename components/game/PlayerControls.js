@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import BattleLog from './BattleLog';
 import GameOptions from './GameOptions';
 import PlayerAbilities from './PlayerAbilities';
 import classes from './PlayerControls.module.css';
@@ -25,7 +26,9 @@ const PlayerControls = () => {
         <div className={playerControls}>
             <h2>Player Controls</h2>
             <div className={classes['control-group-row']}>
-                <PlayerInfo />
+                <div style={{ width: '35%' }}>
+                    <PlayerInfo />
+                </div>
                 <div className={classes['control-group-row']}>
                     {gameStatus === 'playing' &&
                         <PlayerAbilities />
@@ -34,7 +37,8 @@ const PlayerControls = () => {
                         <GameOptions />
                     }
                 </div>
-                <div id='spacer' style={{width: '20%'}}>
+                <div id='spacer' style={{ width: '35%' }}>
+                    <BattleLog />
                 </div>
             </div>
             <div className={classes['module-container']} style={{ width: '65%' }}>

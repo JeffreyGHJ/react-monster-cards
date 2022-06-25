@@ -1,0 +1,20 @@
+.player {
+    color: #7700ff;
+}
+
+.enemy {
+    color: #da8d00;
+}
+
+.attack {
+    color: red;
+}
+
+.special {
+    color: red;
+    text-shadow: black;
+}
+
+.heal {
+    color: green;
+}

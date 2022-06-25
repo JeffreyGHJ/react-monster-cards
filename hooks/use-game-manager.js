@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn } from '../slices/player-slice';
 import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
-import { setGameStatus } from "../slices/game-slice";
+import { setGameStatus} from "../slices/game-slice";
 import useDatabase from "./use-database";
+import useBattleLog from "./use-battle-log";
 
 const useGameManager = () => {
     const enemyList = useSelector((state) => state.enemyBoard.enemyDeck);
@@ -11,6 +12,7 @@ const useGameManager = () => {
     const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
     const playerHealth = useSelector((state) => state.player.playerHealth);
     const { updatePlayerData } = useDatabase();
+    const { logMessage } = useBattleLog();
     const dispatch = useDispatch();
 
     const resetGame = (status) => {
@@ -66,32 +68,37 @@ const useGameManager = () => {
 
     const executeAttack = () => {
         let damage = Math.round(Math.random() * 3);
+        logMessage('player', 'attack', damage);
         dispatch(decreaseEnemyHealthBy(damage));
-        receiveAttack();
+        attackPlayer();
     }
 
     const executeSpecialAttack = () => {
         let damage = Math.round(Math.random() * 5);
+        logMessage('player', 'special', damage);
         dispatch(decreaseEnemyHealthBy(damage));
         dispatch(setLastSpec());
-        receiveAttack();
+        attackPlayer();
     }
 
     const executeHeal = () => {
         let heal = Math.round(Math.random() * (3 + playerLevel));
+        logMessage('player', 'heal', heal);
         dispatch(increaseHealthBy(heal));
-        receiveAttack();
+        attackPlayer();
     }
 
     const detectGameOver = () => {
-        if ( playerHealth <= 0 ) {
+        if (playerHealth <= 0) {
+            /* logMessage('system', 'game over', null); */
             dispatch(setGameStatus('lose'));
         }
     }
 
     // HELPER FUNCTION - DOES NOT NEED TO BE RETURNED
-    const receiveAttack = () => {   
+    const attackPlayer = () => {
         let damage = Math.round(Math.random() * 2);
+        logMessage(currentEnemy.name, 'attack', damage);
         dispatch(decreaseHealthBy(damage));
         dispatch(incrementTurn());
     }

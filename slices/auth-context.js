@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
-import { setPlayerLevel } from "./player-slice";
+import { setPlayerLevel, setUsername } from "./player-slice";
 import useDatabase from "../hooks/use-database";
 
 const ISBROWSER = !(typeof window === 'undefined');
@@ -24,7 +24,7 @@ const calculateRemainingTime = (expirationTime) => {
 }
 
 const retrieveStoredToken = () => {
-    if (ISBROWSER) {
+    if (ISBROWSER) {    // localStorage only exists for the browser
         const storedToken = localStorage.getItem('token');
         const storedUid = localStorage.getItem('uid');
         const storedExpirationDate = localStorage.getItem('expirationTime'); 
@@ -102,6 +102,9 @@ export const AuthContextProvider = (props) => {
         if ( logoutTimer ) {
             clearTimeout(logoutTimer);
         }
+
+        // CLEAR OUT REDUX STATE RELATED TO THIS ACCOUNT
+        dispatch(setUsername('Guest'));
 
         router.replace('/');
     }, []);
