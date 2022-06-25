@@ -4,6 +4,25 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/24/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Added Battle Log component to Player Controls
+                    </h3>
+                    <ul>
+                        <li>
+                            The Battle Log displays recent messages that describe actions made by the player and reactions made by the game.
+                        </li>
+                        <li>
+                            The message window of the Battle Log is scrollable so users are able to see older messages.
+                        </li>
+                        <li>
+                            Battle log will hold up to 70 recent messages and will then shrink down to half size to clear room for new messages.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/23/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
