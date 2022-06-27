@@ -3,12 +3,28 @@
   margin: 0.25rem;
 }
 
-.game-board{
+.game-board {
+  /* background-color: rgb(123, 122, 212); */
+  /* height: 46vh; */
+  padding: 1vh 1vw;
+}
+
+.game-board-container {
   background-color: rgb(215, 200, 117);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 12px;
+  height: 46vh;
+  /* height: 100%; */
 }
 
 .enemy-card-space {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 95%;
 }

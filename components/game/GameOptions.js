@@ -12,7 +12,9 @@ const GameOptions = () => {
 
     return (
         <div className={classes['game-options']}>
-            <h4>Game Options</h4>
+            <div style={{fontSize: '3vmin'}}>
+                Game Options
+            </div>
             <div className={classes['control-panel']}>
                 {gameStatus === 'win' &&
                     <button onClick={() => resetHandler('continue')} className={classes['continue-button']}>

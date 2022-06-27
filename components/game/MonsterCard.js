@@ -14,9 +14,9 @@ const MonsterCard = props => {
     const maxHealth = props.monster.maxHealth;
 
     const currentHealthPercent = () => {
-        let percent = ( monster.health / maxHealth ) * 100;
+        let percent = (monster.health / maxHealth) * 100;
         let result = percent + '%';
-        return {width: result.toString()};
+        return { width: result.toString() };
     }
 
     return (
@@ -24,18 +24,23 @@ const MonsterCard = props => {
             <div className={flipCard}>
                 <div className={classes['card-front']}>
 
-                    <h2>{monster.name}</h2>
-                    <div className={cardPortrait} >
+                    <div className={classes['card-title']} >
+                        {monster.name}
+                    </div>
+
+                    <div className={classes['monster-portrait']} >
                         <Image src={monster.portraitIdle} alt={monster.alt} /* style={customHeight} */></Image>
                     </div>
 
                     <div className={classes['card-body']}>
-                        <div className={cardInfoBox}>
+                        <div className={classes['card-info-box']}>
                             <div className={classes['card-info']}>{monster.info}</div>
                         </div>
 
-                        <div className={cardStatus}>
-                            <div>HP: {monster.health}</div>
+                        <div className={classes['monster-status']}>
+                            <div className={classes['health-text']}>
+                                HP: {monster.health}
+                            </div>
                             <div className={classes.healthbar}>
                                 <div className={classes.healthbar__value} style={currentHealthPercent()}></div>
                             </div>

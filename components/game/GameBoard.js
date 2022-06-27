@@ -9,23 +9,25 @@ const GameBoard = () => {
     const gameStatus = useSelector((state) => state.game.gameStatus);
 
     return (
-        <div className={gameBoardStyle}>
-            <h1>Game Board</h1>
-            {gameStatus === 'playing' &&
-                <div className={classes['enemy-card-space']}>
-                    <MonsterCard monster={currentEnemy} />
-                </div>
-            }
-            {gameStatus === 'win' &&
-                <div>
-                    <h1>Victory!</h1>
-                </div>
-            }
-            {gameStatus === 'lose' &&
-                <div>
-                    <h1>Defeat!</h1>
-                </div>
-            }
+        <div className={classes['game-board']}>
+            <div className={classes['game-board-container']}> 
+                {/* <div>Game Board</div> */}
+                {gameStatus === 'playing' &&
+                    <div className={classes['enemy-card-space']}>
+                        <MonsterCard monster={currentEnemy} />
+                    </div>
+                }
+                {gameStatus === 'win' &&
+                    <div>
+                        <h1>Victory!</h1>
+                    </div>
+                }
+                {gameStatus === 'lose' &&
+                    <div>
+                        <h1>Defeat!</h1>
+                    </div>
+                }
+            </div>
         </div>
     );
 };

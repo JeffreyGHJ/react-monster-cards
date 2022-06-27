@@ -4,6 +4,25 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/27/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Changed styles on 'Play' page
+                    </h3>
+                    <ul>
+                        <li>
+                            Changed the css styling on components within the 'Play' page to use relative sizing of parent containers.
+                        </li>
+                        <li>
+                            The game should now be able to fit in any size window without the user having to scroll around to see.
+                        </li>
+                        <li>
+                            All components should maintain their relative size and not overlap no matter how the window is resized.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/24/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>

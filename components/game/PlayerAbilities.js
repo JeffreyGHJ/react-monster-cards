@@ -33,7 +33,7 @@ const PlayerAbilities = () => {
 
     return (
         <div className={classes['player-abilities']}>
-            <h4>Player Abilities</h4>
+            <div>Player Abilities</div>
             <div className={classes['control-panel']}>
                 <button id='attack-button' onClick={attackHandler}>
                     Attack
@@ -47,6 +47,7 @@ const PlayerAbilities = () => {
                 <button id='surrender-button' onClick={surrenderHandler}>
                     Surrender
                 </button>
+                
             </div>
         </div>
     );

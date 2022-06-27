@@ -8,7 +8,9 @@
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
     /* margin: 1vmin; */
     height: 25vh;
+    width: 30%;
     font-size: .8vmax;
+    margin-right: 1vmin;
 }
 
 .battle-log-title {

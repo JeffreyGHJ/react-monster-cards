@@ -6,6 +6,7 @@
     border-radius: 12px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
     margin: 1vmin;
+    width: 20%;
 }
 
 .control-panel {
@@ -19,10 +20,11 @@
 /*     border: 1px solid #88005b;
     background-color: #88005b; */
     color: white;
-    padding: .6rem 2rem;
+    padding: .6vmin 2vmin;
     border-radius: 12px;
-    margin: .4rem;
-    width: 12rem;
+    margin: 1vmin;
+    width: 18vmin;
+    font-size: 2.5vmin;
     cursor: pointer;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }

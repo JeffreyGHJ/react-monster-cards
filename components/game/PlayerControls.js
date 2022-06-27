@@ -5,8 +5,6 @@ import PlayerAbilities from './PlayerAbilities';
 import classes from './PlayerControls.module.css';
 import PlayerInfo from './PlayerInfo';
 
-const playerControls = `${classes['player-controls']} container`;
-
 const getPercentageString = (playerHealth, maxPlayerHealth) => {
     let percent = (playerHealth / maxPlayerHealth) * 100;
     let result = percent + '%';
@@ -23,30 +21,29 @@ const PlayerControls = () => {
     };
 
     return (
-        <div className={playerControls}>
-            <h2>Player Controls</h2>
-            <div className={classes['control-group-row']}>
-                <div style={{ width: '35%' }}>
-                    <PlayerInfo />
-                </div>
+        <div className={classes['player-controls']}>
+            <div className={classes['player-controls-container']}>
+                {/* <div>Player Controls</div> */}
                 <div className={classes['control-group-row']}>
+                    <PlayerInfo />
                     {gameStatus === 'playing' &&
                         <PlayerAbilities />
                     }
                     {gameStatus !== 'playing' &&
                         <GameOptions />
                     }
-                </div>
-                <div id='spacer' style={{ width: '35%' }}>
                     <BattleLog />
                 </div>
-            </div>
-            <div className={classes['module-container']} style={{ width: '65%' }}>
-                <div>HP: {playerHealth}</div>
-                <div className={classes.healthbar}>
-                    <div className={classes.healthbar__value} style={currentHealthPercent()}></div>
+                <div className={classes['module-container']}>
+                    <div className={classes['health-text']}>
+                        HP: {playerHealth}
+                    </div>
+                    <div className={classes.healthbar}>
+                        <div className={classes.healthbar__value} style={currentHealthPercent()}></div>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 }
