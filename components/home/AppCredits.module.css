@@ -58,3 +58,14 @@
     color: rgb(221, 129, 244);
     font-size: 1.3vmin;
 }
+
+.github-link {
+    margin-bottom: 1vmin;
+    font-size: 1.8vmin;
+} 
+
+.github-link a {
+    color: rgb(197, 77, 227);
+    text-decoration: none;
+}
+

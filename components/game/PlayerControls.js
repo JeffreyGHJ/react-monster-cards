@@ -23,7 +23,6 @@ const PlayerControls = () => {
     return (
         <div className={classes['player-controls']}>
             <div className={classes['player-controls-container']}>
-                {/* <div>Player Controls</div> */}
                 <div className={classes['control-group-row']}>
                     <PlayerInfo />
                     {gameStatus === 'playing' &&

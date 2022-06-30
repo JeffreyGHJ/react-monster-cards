@@ -51,6 +51,10 @@ export const playerSlice = createSlice ({
             console.log("incrementing player level");
             state.playerLevel += 1;
         },
+        decrementPlayerLevel: (state) => {
+            console.log("decrementing player level");
+            state.playerLevel -= 1;
+        },
         setPlayerLevel: (state, action) => {
             console.log("Setting player level to: " + action.payload);
             state.playerLevel = action.payload;
@@ -68,6 +72,10 @@ export const playerSlice = createSlice ({
             state.turn += 1;
             console.log("Current turn: " + state.turn);
         },
+        resetTurns: (state) => {
+            state.turn = 1;
+            console.log("resetting turns");
+        },
         setUsername: (state, action) => {
             console.log("setting username to: " + action.payload);
             state.username = action.payload;
@@ -83,9 +91,11 @@ export const {
     decreaseHealthBy, 
     resetPlayerLevel, 
     incrementPlayerLevel,
+    decrementPlayerLevel,
     setPlayerLevel,
     setLastSpec,
     incrementTurn,
+    resetTurns,
     setUsername,
 } = playerSlice.actions;
 

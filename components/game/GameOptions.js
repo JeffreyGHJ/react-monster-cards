@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import useGameManager from '../../hooks/use-game-manager';
+import ConfirmSurrender from './ConfirmSurrender';
 import classes from './GameOptions.module.css';
 
 const GameOptions = () => {
@@ -12,21 +13,28 @@ const GameOptions = () => {
 
     return (
         <div className={classes['game-options']}>
-            <div style={{fontSize: '3vmin'}}>
-                Game Options
-            </div>
-            <div className={classes['control-panel']}>
-                {gameStatus === 'win' &&
-                    <button onClick={() => resetHandler('continue')} className={classes['continue-button']}>
-                        Continue
-                    </button>
-                }
-                {gameStatus === 'lose' &&
-                    <button onClick={() => resetHandler('retry')} className={classes['retry-button']}>
-                        Retry
-                    </button>
-                }
-            </div>
+            {gameStatus !== 'surrender' &&
+                <>
+                    <div style={{ fontSize: '3vmin' }}>
+                        Game Options
+                    </div>
+                    <div className={classes['control-panel']}>
+                        {gameStatus === 'win' &&
+                            <button onClick={() => resetHandler('continue')} className={classes['continue-button']}>
+                                Continue
+                            </button>
+                        }
+                        {gameStatus === 'lose' &&
+                            <button onClick={() => resetHandler('retry')} className={classes['retry-button']}>
+                                Retry
+                            </button>
+                        }
+                    </div>
+                </>
+            }
+            {gameStatus === 'surrender' &&
+                <ConfirmSurrender />
+            } 
         </div>
     );
 };

@@ -4,17 +4,14 @@ import AuthContext from "../slices/auth-context";
 import useDatabase from "./use-database";
 
 const useAuth = () => {
-    
+    const router = useRouter();
+    const authCtx = useContext(AuthContext);
+    const { createPlayerData } = useDatabase();
     const [isLoading, setIsLoading] = useState(false);
     
-    const { createPlayerData } = useDatabase();
-    const authCtx = useContext(AuthContext);
-    const router = useRouter();
-
     const sendRequest = async (isLoginMode, enteredEmail, enteredPassword) => {
         setIsLoading(true);
         console.log("Calling sendRequest() in useAuth() hook:");
-        //console.log("isLoginMode: " + isLoginMode + ", enteredEmail: " + enteredEmail + ", enteredPassword: " + enteredPassword);
         
         try {
             const response = await fetch('/api/authenticate-user', {
@@ -43,9 +40,7 @@ const useAuth = () => {
                 // TO-DO: IF ERROR FROM CREATE USER, THEN DO NOT PERFORM LOGIN
 
                 authCtx.login(responseData.idToken, expirationTime.toISOString(), responseData.localId);
-
                 setIsLoading(false);
-
                 router.replace("/");
             }
         } catch (error) {

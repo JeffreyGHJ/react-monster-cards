@@ -1,0 +1,72 @@
+.confirm-surrender {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    /* height: 100%; */
+    font-size: 1.8vmin;
+}
+
+.message-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-title {
+    font-weight: bolder;
+}
+
+.message-body {
+    padding: .6vmin;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* width: 90%; */
+    padding-bottom: .6vmin;
+}
+
+.control-panel button {
+    font: inherit;
+    font-size: 1.6vmin;
+    border: 1px solid #88005b;
+    background-color: #88005b;
+    color: white;
+    padding-top: .5vmin;
+    padding-bottom: .5vmin;
+    border-radius: 1.2vmin;
+    margin: .6vmin;
+    width: 10vmin;
+    height: 5%;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:focus {
+    outline: none;
+}
+
+.control-panel button:hover {
+    background-color: #af0a78;
+    border-color: #af0a78;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:active {
+    background-color: #600b44;
+    border-color: #af0a78;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+.control-panel button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    box-shadow: none;
+    color: #3f3f3f;
+    cursor: not-allowed;
+}

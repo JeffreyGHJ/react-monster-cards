@@ -43,6 +43,11 @@ const AppCredits = (props) => {
                         </div>
                     </div>
                 </div>
+                <div className={classes['github-link']}>
+                    <a href="https://github.com/JeffreyGHJ/react-monster-cards" target="_blank" rel="noopener noreferrer">
+                        Click here to view the source code on GitHub
+                    </a>
+                </div>
             </div>
         </div>
     );

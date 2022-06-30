@@ -31,9 +31,8 @@ export const enemyBoardSlice = createSlice({
         },
         scaleCurrentEnemy: (state, action) => {
             console.log("scaling current enemy by: " + action.payload);
-            console.log("current enem health: " + state.currentEnemy.health);
-            state.currentEnemy.health *= action.payload;
-            state.currentEnemy.maxHealth *= action.payload;
+            state.currentEnemy.health += action.payload * 3;
+            state.currentEnemy.maxHealth += action.payload * 3;
             console.log("scaled enem health: " + state.currentEnemy.health);
         },
         decreaseEnemyHealthBy: (state, action) => {

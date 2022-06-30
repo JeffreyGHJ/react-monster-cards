@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, resetPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn } from '../slices/player-slice';
+import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, decrementPlayerLevel, resetPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn, resetTurns } from '../slices/player-slice';
 import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
-import { setGameStatus} from "../slices/game-slice";
+import { setGameStatus, setInit } from "../slices/game-slice";
 import useDatabase from "./use-database";
 import useBattleLog from "./use-battle-log";
 
@@ -11,47 +11,59 @@ const useGameManager = () => {
     const playerLevel = useSelector((state) => state.player.playerLevel);
     const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
     const playerHealth = useSelector((state) => state.player.playerHealth);
+    const initialized = useSelector(state => state.game.initialized);
     const { updatePlayerData } = useDatabase();
     const { logMessage } = useBattleLog();
     const dispatch = useDispatch();
 
-    const resetGame = (status) => {
-        dispatch(setEnemyDeck());
-        dispatch(setFirstEnemy());
-        dispatch(setLastSpec(true));
+    const resetGame = (status) => { 
+        initializeBattle();
+        let newPlayerLevel = playerLevel;
         if (status === 'continue') {
-            console.log("new game +")
-            let newPlayerLevel = playerLevel + 1;
-            dispatch(incrementPlayerLevel());
-            dispatch(scaleCurrentEnemy(newPlayerLevel));
-            dispatch(increaseMaxHealthBy(newPlayerLevel * 2));
+            newPlayerLevel += 1;
             updatePlayerData(newPlayerLevel);
-            dispatch(setGameStatus('playing'));
+            dispatch(incrementPlayerLevel());
         } else if (status === 'retry') {
-            console.log("resetting game")
-            dispatch(setPlayerHealth(10));
-            dispatch(setMaxPlayerHealth(10));
-            dispatch(resetPlayerLevel());
-            updatePlayerData(1);
-            dispatch(setGameStatus('playing'));
+            newPlayerLevel -= 1;
+            updatePlayerData(newPlayerLevel);
+            dispatch(decrementPlayerLevel());
         } else if (status === 'surrender') {
             console.log('surrendering battle');
-            dispatch(setPlayerHealth(maxPlayerHealth));
-            dispatch(setGameStatus('playing'));
-        } else {  // status not handled
+        } else {
             console.log("Error: resetHandler status not handled");
-            dispatch(setGameStatus('playing'));
         }
+        dispatch(scaleCurrentEnemy(newPlayerLevel - 1));
+        dispatch(setGameStatus('playing'));
     };
 
+    const initializeBattle = () => {
+        dispatch(resetTurns());
+        dispatch(setLastSpec(true));
+        let newHealth = 10 + ( (playerLevel-1) * 2);
+        dispatch(setMaxPlayerHealth(newHealth));
+        dispatch(setPlayerHealth(newHealth));
+        dispatch(setEnemyDeck());
+        dispatch(setFirstEnemy());
+        if ( !initialized ) {
+            dispatch(scaleCurrentEnemy(playerLevel-1));
+            setInit();
+        } 
+        // CLEAR BATTLE LOG?
+    }
+
+    const scaleGame = () => {
+        console.log("scaling game stats");
+        dispatch(setMaxPlayerHealth( 10 + ( (playerLevel-1) * 2 ) ));
+        dispatch(setPlayerHealth(maxPlayerHealth));
+        dispatch(scaleCurrentEnemy(playerLevel-1));
+    }
+
     const updateCurrentEnemy = () => {
-        console.log(enemyList);
-        console.log(currentEnemy)
         if (currentEnemy === null || currentEnemy.health <= 0) {
             if (enemyList.length > 0) {
                 console.log("setting next enemy");
                 dispatch(setCurrentEnemy(enemyList[0]));
-                dispatch(scaleCurrentEnemy(playerLevel));
+                dispatch(scaleCurrentEnemy(playerLevel-1));
                 dispatch(shiftEnemyDeck());
             } else {
                 console.log("setting empty enemy");
@@ -67,14 +79,14 @@ const useGameManager = () => {
     }
 
     const executeAttack = () => {
-        let damage = Math.round(Math.random() * 3);
+        let damage = Math.round(Math.random() * (3 + playerLevel));
         logMessage('player', 'attack', damage);
         dispatch(decreaseEnemyHealthBy(damage));
         attackPlayer();
     }
 
     const executeSpecialAttack = () => {
-        let damage = Math.round(Math.random() * 5);
+        let damage = Math.round(Math.random() * 8);
         logMessage('player', 'special', damage);
         dispatch(decreaseEnemyHealthBy(damage));
         dispatch(setLastSpec());
@@ -95,6 +107,10 @@ const useGameManager = () => {
         }
     }
 
+    const updateGameStatus = (status) => {
+        dispatch(setGameStatus(status));
+    }
+
     // HELPER FUNCTION - DOES NOT NEED TO BE RETURNED
     const attackPlayer = () => {
         let damage = Math.round(Math.random() * 2);
@@ -106,11 +122,14 @@ const useGameManager = () => {
     return {
         resetGame,
         updateCurrentEnemy,
+        initializeBattle,
+        scaleGame,
         setPlayerHealthToMax,
         executeAttack,
         executeSpecialAttack,
         executeHeal,
         detectGameOver,
+        updateGameStatus,
     };
 };
 

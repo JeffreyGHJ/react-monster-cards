@@ -1,11 +1,9 @@
 import classes from './WelcomeMessage.module.css'
 
-const WelcomeMessage = ( props ) => {
+const WelcomeMessage = () => {
     return (
         <div className={classes['welcome-message']}>
-            <h1>
-                React Monster Cards
-            </h1>
+            React Monster Cards
         </div>
     );
 };

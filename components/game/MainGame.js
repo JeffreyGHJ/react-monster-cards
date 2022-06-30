@@ -6,10 +6,14 @@ import PlayerControls from './PlayerControls';
 import classes from './MainGame.module.css';
 
 const MainGame = () => {
-  const maxPlayerHealth = useSelector((state) => state.player.maxPlayerHealth);
+  const playerLevel = useSelector((state) => state.player.playerLevel);
   const playerHealth = useSelector((state) => state.player.playerHealth);
   const currentEnemy = useSelector((state) => state.enemyBoard.currentEnemy);
-  const { updateCurrentEnemy, detectGameOver, setPlayerHealthToMax, resetGame } = useGameManager();
+  const { updateCurrentEnemy, detectGameOver, initializeBattle, } = useGameManager();
+
+  useEffect(() => {
+    initializeBattle(true);
+  }, [playerLevel])
 
   useEffect(() => {
     updateCurrentEnemy();
@@ -18,10 +22,6 @@ const MainGame = () => {
   useEffect(() => {
     detectGameOver();
   }, [playerHealth])
-
-  useEffect(() => { 
-    setPlayerHealthToMax();
-  }, [maxPlayerHealth]);
 
   return (
     <div className={classes['main-game']}>

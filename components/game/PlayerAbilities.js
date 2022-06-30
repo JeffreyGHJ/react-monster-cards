@@ -8,8 +8,8 @@ const SPEC_COOLDOWN = 5;
 const PlayerAbilities = () => {
     const lastSpec = useSelector((state) => state.player.lastSpec);
     const turn = useSelector((state) => state.player.turn);
-    const { executeAttack, executeSpecialAttack, executeHeal, resetGame } = useGameManager();
-    const [specialOnCooldown, setSpecialOnCooldown] = useState(false);
+    const { executeAttack, executeSpecialAttack, executeHeal, updateGameStatus } = useGameManager();
+    const [specialOnCooldown, setSpecialOnCooldown] = useState(false);  // Computed State
 
     useEffect(() => {
         setSpecialOnCooldown(lastSpec !== null && turn - lastSpec <= SPEC_COOLDOWN);
@@ -28,10 +28,11 @@ const PlayerAbilities = () => {
     };
 
     const surrenderHandler = () => {
-        resetGame('surrender');
+        updateGameStatus('surrender');
     };
 
     return (
+
         <div className={classes['player-abilities']}>
             <div>Player Abilities</div>
             <div className={classes['control-panel']}>
@@ -47,7 +48,6 @@ const PlayerAbilities = () => {
                 <button id='surrender-button' onClick={surrenderHandler}>
                     Surrender
                 </button>
-                
             </div>
         </div>
     );

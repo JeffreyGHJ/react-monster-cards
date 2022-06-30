@@ -3,11 +3,22 @@
   margin: 0.25rem;
 }
 
+.game-board-base {
+  perspective: 1000px;
+}
+
 .game-board {
   /* background-color: rgb(123, 122, 212); */
   /* height: 46vh; */
   padding: 1vh 1vw;
+/*   transition: transform 0.8s;
+  transform-style: preserve-3d; */
 }
+
+
+/* .game-board-base:hover .game-board{
+  transform: rotateX(30deg);
+} */
 
 .game-board-container {
   background-color: rgb(215, 200, 117);

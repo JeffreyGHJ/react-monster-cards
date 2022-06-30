@@ -1,8 +1,10 @@
 .flip-base {
     perspective: 1000px;
     /* margin: 1rem; */
-    height: 31vmin;
-    width: 22vmin;
+    /* height: 31vmin;
+    width: 22vmin; */
+    height: 42vmin;
+    width: 27vmin;
 }
 
 .flip-inner {
@@ -64,8 +66,8 @@
     align-items: center;
     /* width: 50%;
     height: 36%; */
-    width: 14vmin;
-    height: 14vmin;
+    width: 16vmin;
+    height: 16vmin;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
     text-align: center;
@@ -81,8 +83,8 @@
 }
 
 .monster-portrait img {
-    min-width: 6vmin;
-    min-height: 6vmin;
+    min-width: 7vmin;
+    min-height: 7vmin;
 }
 
 .monster-status {
@@ -96,7 +98,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 42%;
+    height: 50%;
 }
 
 .card-info-box {
@@ -104,10 +106,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 75%;
+    height: 80%;
     width: auto;
-    margin-right: .5vw;
-    margin-left: .5vw;
+    margin-right: .7vw;
+    margin-left: .7vw;
     font-size: 1.4vmin;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
