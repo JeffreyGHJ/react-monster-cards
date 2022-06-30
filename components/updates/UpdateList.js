@@ -4,6 +4,47 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 6/30/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Added confirmation dialog to 'Surrender' option in player controls
+                    </h3>
+                    <ul>
+                        <li>
+                            When the player chooses 'Surrender' a dialog box will give the player an option to cancel or confirm.
+                        </li>
+                        <li>
+                            If the player cancels, nothing will happen and the battle will continue where it was left off.
+                        </li>
+                        <li>
+                            If the player confirms, the current battle will be reset to its inital state and the player will suffer no penalty.
+                        </li>
+                    </ul>
+                    <h3>
+                        Updates to Home Page
+                    </h3>
+                    <ul>
+                        <li>
+                            Made the Home Page title bigger and added a text shadow to add depth.
+                        </li>
+                        <li>
+                            Added a link to this application's GitHub code repository within the AppCredits component at the bottom of the Home Page.
+                        </li>
+                    </ul>
+                    <h3>
+                        Bug Fix
+                    </h3>
+                    <ul>
+                        <li>
+                            Fixed bug where enemy health and player health would continually increase if switching between pages in the app.
+                        </li>
+                        <li>
+                            Switching pages will no longer reset or affect the current battle state in any way.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/27/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
