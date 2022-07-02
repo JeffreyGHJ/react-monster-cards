@@ -1,11 +1,11 @@
 .player-abilities {
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 12px;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-    width: 30%;
+    /* border-radius: 12px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26); */
+    width: 38%;
     /* height: 100%; */
     font-size: 1.8vmin;
 }
@@ -14,22 +14,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    padding-bottom: .6vmax;
+    width: 100%;
+    /* padding-bottom: .6vmax; */
 }
 
 .control-panel button {
     font: inherit;
-    font-size: 1vmax;
+    font-size: 3vmin;
     border: 1px solid #88005b;
     background-color: #88005b;
     color: white;
-    padding-top: .5vmax;
-    padding-bottom: .5vmax;
+/*     padding-top: .5vmin;
+    padding-bottom: .5vmin; */
     border-radius: 1.2vmin;
     margin: .8vmin;
-    width: 80%;
-    height: 5%;
+    width: 95%;
+    max-width: 20rem;
+    height: 6vh;
     cursor: pointer;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }

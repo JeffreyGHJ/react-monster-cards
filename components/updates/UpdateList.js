@@ -4,6 +4,52 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 7/1/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Added tooltips to the Login page
+                    </h3>
+                    <ul>
+                        <li>
+                            When on the login page in signup-mode the email and password inputs will show tooltips with useful info.
+                        </li>
+                        <li>
+                            The tooltips show when hovering the cursor over the inputs but will not show if the page is in login-mode.
+                        </li>
+                    </ul>
+                    <h3>
+                        Added active links
+                    </h3>
+                    <ul>
+                        <li>
+                            The navigation links at the top of the page will display yellow and underlined when the user is on the corresponding page.
+                        </li>
+                    </ul>
+                    <h3>
+                        Bug Fix
+                    </h3>
+                    <ul>
+                        <li>
+                            Corrected issue where logging in or out during 'Victory' or 'Defeat' would cause unintended behavior.
+                        </li>
+                    </ul>
+                    <h3>
+                        Updated styling across the site
+                    </h3>
+                    <ul>
+                        <li>
+                            The contents of most pages have been resized to better display in various screen orientations and sizes.
+                        </li>
+                        <li>
+                            Updated font sizes to be easier to read in some places.
+                        </li>
+                        <li>
+                            Removed container style from player controls and increased button sizes.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 6/30/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>

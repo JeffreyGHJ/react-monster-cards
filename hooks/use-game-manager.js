@@ -26,7 +26,9 @@ const useGameManager = () => {
         } else if (status === 'retry') {
             newPlayerLevel -= 1;
             updatePlayerData(newPlayerLevel);
-            dispatch(decrementPlayerLevel());
+            if ( playerLevel > 1 ) {
+                dispatch(decrementPlayerLevel());
+            }
         } else if (status === 'surrender') {
             console.log('surrendering battle');
         } else {

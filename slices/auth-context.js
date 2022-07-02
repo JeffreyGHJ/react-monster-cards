@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
 import { setPlayerLevel, setUsername } from "./player-slice";
+import useGameManager from "../hooks/use-game-manager";
 import useDatabase from "../hooks/use-database";
 
 const ISBROWSER = !(typeof window === 'undefined');
@@ -51,6 +52,7 @@ export const AuthContextProvider = (props) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const { loadPlayer } = useDatabase();
+    const { initializeBattle, updateGameStatus } = useGameManager();
 
     let tokenData;
     let initialToken;
@@ -105,6 +107,9 @@ export const AuthContextProvider = (props) => {
 
         // CLEAR OUT REDUX STATE RELATED TO THIS ACCOUNT
         dispatch(setUsername('Guest'));
+        initializeBattle();
+        updateGameStatus('playing');
+
 
         router.replace('/');
     }, []);
@@ -125,7 +130,9 @@ export const AuthContextProvider = (props) => {
 
         // load player data from server
         console.log('calling loadPlayer hook from loginHandler');
-        loadPlayer(localId); 
+        await loadPlayer(localId); 
+        initializeBattle();
+        updateGameStatus('playing');
     };
 
     useEffect(() => {   // this sets a timer if there was a stored token

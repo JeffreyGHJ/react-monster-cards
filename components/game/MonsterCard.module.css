@@ -12,7 +12,7 @@
     transform-style: preserve-3d;
 }
 
-.flip-base:hover .flip-inner{
+.flip-base:hover .flip-inner {
     transform: rotateY(180deg);
 }
 
@@ -39,7 +39,7 @@
     font-size: 1.4vh;
 }
 
-.card h2{
+.card h2 {
     font-size: 1.6vh;
     margin: 0px;
 }
@@ -159,4 +159,54 @@
     width: 95%;
     height: 97%;
     border-radius: inherit;
+}
+
+
+@media only screen and (orientation: portrait) {
+    .flip-base {
+        height: 42vmax;
+        width: 27vmax;
+    }
+
+    .card {
+        border-radius: 1.2vmax;
+        font-size: 1.4vh;
+    }
+
+    .healthbar {
+        height: 1vmax;
+    }
+
+    .monster-portrait {
+        width: 16vmax;
+        height: 16vmax;
+    }
+
+    .card-title {
+        margin-top: .4vmax;
+        font-size: 1.5vmax;
+    }
+
+    .monster-portrait img {
+        min-width: 7vmax;
+        min-height: 7vmax;
+    }
+
+    .monster-status {
+        margin-right: .5vh;
+        margin-left: .5vh;
+    }
+
+    .card-info-box {
+        margin-right: .7vh;
+        margin-left: .7vh;
+        font-size: 1.4vmax;
+        margin-top: 1vmax;
+        margin-bottom: .2vmax;
+    }
+
+    .health-text {
+        font-size: 1.2vmax;
+    }
+
 }

@@ -38,13 +38,15 @@ const AuthForm = (props) => {
                                     <AtSignSvg height="80%" width="80%" />
                                 </div>
                             </div>
-                            <input id='email' type='email' placeholder='Email' ref={emailInputRef}></input>
+                            <input id='email' type='email' placeholder='Email' ref={emailInputRef} ></input>
+                            {!isLoginMode && <span className={classes['tooltiptext']}>Email only used for login, can be made-up, users will never be contacted via email</span>}
                         </div>
                         <div className={classes['input-group']}>
                             <div className={classes['input-decoration']}>
                                 <LockSvg height="80%" width="80%" />
                             </div>
                             <input id='password' type='password' placeholder='Password' ref={passwordInputRef}></input>
+                            {!isLoginMode && <span className={classes['tooltiptext']}>Password must be at least 6 characters long</span>}
                         </div>
                         {!isLoading && <button className={classes.button}>
                             {isLoginMode ? 'Login' : 'Create Account'}
@@ -55,8 +57,8 @@ const AuthForm = (props) => {
                         {isLoginMode ? 'Create new account' : 'Login existing user'}
                     </button>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 
 };

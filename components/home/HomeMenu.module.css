@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
-    width: 45vw;
+    width: 75vw;
+    max-width: 40rem;
     height: 30vh;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
@@ -12,6 +13,7 @@
 
 .menu-controls {
     /* width: 20%; */
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,10 +61,10 @@
 }
 
 .home-menu button {
-    font-size: 2vmin;
-    width: 30vw;
-    height: 5vh;
-    margin: .3vh 0 .3vh 0;
+    font-size: 3vmin;
+    width: 100%;
+    height: 4vh;
+    margin: .6vh 0 .6vh 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 8px;
     border: 0px;

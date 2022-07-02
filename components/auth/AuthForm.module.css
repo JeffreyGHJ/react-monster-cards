@@ -4,7 +4,8 @@
     margin: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 12px;
-    width: 50vw;
+    width: 80vw;
+    max-width: 40rem;
     background-color: rgb(96, 0, 96);
     color: white;
     margin-top: 15vh;
@@ -14,20 +15,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2vh;
 }
 
 .input-group {
     flex-direction: row;
-    width: 70%;
-    height: 1.6rem;
+    width: 75%;
+    height: 5vmin;
+    max-height: 2rem;
+    min-height: 1.2rem;
     color: white;
-    display: flex;
+    display: inline-flex;
+    position: relative;
     justify-content: center;
-    margin: 1rem;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
 }
 
-.input-group input{
+.input-group input {
     padding-left: 1vw;
     width: 100%;
     border: none;
@@ -39,7 +44,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:#422740;
+    background-color: #422740;
     border-radius: 4px 0px 0px 4px;
     width: 3vw;
 }
@@ -61,9 +66,12 @@
     background-color: #9312d4;
     border: 1px solid #ac74d1;
     border-radius: 4px;
-    padding: 1vmin;
-    width: 70%;
+    padding: .4vmin;
+    width: 45%;
     margin: auto;
+    margin-top: 2vh;
+    font-size: 2vmin;
+    min-height: 2rem;
 }
 
 .button:hover {
@@ -81,4 +89,49 @@
     color: #c28ee4;
     border: none;
     padding: 1vmin;
+}
+
+.input-group .tooltiptext {
+    visibility: hidden;
+    background-color: rgb(254, 165, 0);
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    padding-left: 1vmin;
+    padding-right: 1vmin;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    font-size: .9vmin;
+}
+
+.input-group:hover .tooltiptext {
+    visibility: visible;
+}
+
+.input-group .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(254, 165, 0) transparent transparent transparent;
+}
+
+.input-group .tooltiptext::before {
+    content: " ";
+    position: absolute;
+    top: 102%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
 }

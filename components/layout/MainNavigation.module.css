@@ -22,7 +22,7 @@
 .header li {
     font-size: 2vmin;
     margin: 2vw;
-    width: 8vw;
+    width: 100%;
     text-align: center;
 }
 
@@ -49,4 +49,10 @@
     padding: 0.5vh 1.5vw;
     border: none;
     cursor: pointer;
+}
+
+.active-route a{
+    color: #cdcf76;
+    padding-bottom: 0.25vh;
+    border-bottom: .3vh solid #cdcf76;
 }
