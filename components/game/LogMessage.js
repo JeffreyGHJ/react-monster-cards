@@ -12,8 +12,8 @@ const LogMessage = (props) => {
                 {message.actionBy !== 'player' &&  (message.actionBy + ' ' || 'Enemy ')}
             </span>
             <span>
-                {message.actionType === 'attack' && message.actionBy === 'player' && 'attacks enemy for '}
-                {message.actionType === 'attack' && message.actionBy !== 'player' && 'attacks player for '}
+                {message.actionType === 'attack' && message.actionBy === 'player' && 'attacks for '}
+                {message.actionType === 'attack' && message.actionBy !== 'player' && 'attacks for '}
                 {message.actionType === 'special' && 'special attacks enemy for '}
                 {message.actionType === 'heal' && 'heals for '}
             </span>

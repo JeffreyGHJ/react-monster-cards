@@ -37,6 +37,14 @@ const UpdateList = (props) => {
                             Increased size of some elements in the login page.
                         </li>
                     </ul>
+                    <h3>
+                        Bug fix
+                    </h3>
+                    <ul>
+                        <li>
+                            Damage dealt or healed in battle now scales appropriately with player level.
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div className={classes["update-item"]}>

@@ -86,7 +86,9 @@ const useGameManager = () => {
     }
 
     const executeSpecialAttack = () => {
-        let damage = Math.round(Math.random() * 8);
+        let damage = Math.round(
+            Math.random() * (Math.random() * 2) * (3 + playerLevel)
+        );
         logMessage('player', 'special', damage);
         dispatch(decreaseEnemyHealthBy(damage));
         dispatch(setLastSpec());
@@ -112,7 +114,7 @@ const useGameManager = () => {
 
     // HELPER FUNCTION - DOES NOT NEED TO BE RETURNED
     const attackPlayer = () => {
-        let damage = Math.round(Math.random() * 2);
+        let damage = Math.round(Math.random() * (2 + (playerLevel/2)));
         logMessage(currentEnemy.name, 'attack', damage);
         dispatch(decreaseHealthBy(damage));
         dispatch(incrementTurn());
