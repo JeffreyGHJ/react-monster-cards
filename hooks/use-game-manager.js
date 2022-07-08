@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setMaxPlayerHealth, increaseMaxHealthBy, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, decrementPlayerLevel, resetPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn, resetTurns } from '../slices/player-slice';
+import { setMaxPlayerHealth, decreaseHealthBy, increaseHealthBy, incrementPlayerLevel, decrementPlayerLevel, setPlayerHealth, setLastSpec, incrementTurn, resetTurns } from '../slices/player-slice';
 import { setEnemyDeck, setCurrentEnemy, setFirstEnemy, shiftEnemyDeck, scaleCurrentEnemy, decreaseEnemyHealthBy } from '../slices/enemy-board-slice';
-import { setGameStatus, setInit } from "../slices/game-slice";
+import { setGameStatus } from "../slices/game-slice";
 import useDatabase from "./use-database";
 import useBattleLog from "./use-battle-log";
 
@@ -48,9 +48,7 @@ const useGameManager = () => {
         dispatch(setFirstEnemy());
         if ( !initialized ) {
             dispatch(scaleCurrentEnemy(playerLevel-1));
-            /* setInit(); */
         } 
-        // CLEAR BATTLE LOG?
     }
 
     const scaleGame = () => {
@@ -104,7 +102,6 @@ const useGameManager = () => {
 
     const detectGameOver = () => {
         if (playerHealth <= 0) {
-            /* logMessage('system', 'game over', null); */
             dispatch(setGameStatus('lose'));
         }
     }

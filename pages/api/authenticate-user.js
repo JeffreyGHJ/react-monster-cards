@@ -22,22 +22,8 @@ async function handler(req, res) {
         console.log(response);
         console.log(responseData);
         res.status(response.status).json(responseData);
-        /* res.setHeader('Content-Type', 'application/json'); */
-        /* const data = await response.json();
-        console.log(data);
-        if ( !response.ok ) { 
-            console.log("adding error to response");
-            res.status(data.error.code).json({      // this status code will produce RED in dev console
-                error: data.error
-            });
-        } else {
-            res.status(200).json(data);
-        } */
     } catch (error) {
         res.status(400).json(e);
-        //console.log("error in authenticate-user.js");
-        /* res.json(error);
-        res.status(405).end(); */
     }
 }
 

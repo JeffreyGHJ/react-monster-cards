@@ -34,7 +34,6 @@ const PlayerAbilities = () => {
     return (
 
         <div className={classes['player-abilities']}>
-            {/* <div>Player Abilities</div> */}
             <div className={classes['control-panel']}>
                 <button id='attack-button' onClick={attackHandler}>
                     Attack

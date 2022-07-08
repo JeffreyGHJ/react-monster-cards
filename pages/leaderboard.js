@@ -7,8 +7,6 @@ function Leaderboard(props)  {
     const [players, setPlayers] = useState([]);
 
     useEffect(() => {
-        console.log("Leaderboard useEffect() called");
-        // Load players from database
         async function getPlayers() {
             let data = await getAllPlayers();
             let playerArray = [];

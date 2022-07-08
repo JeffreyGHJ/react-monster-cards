@@ -20,27 +20,9 @@ async function handler(req, res) {
         } else {
             res.status(400).json(new Error("no uid"));
         }
-    } catch (e) {   // FOR UNHANDLED ERRORS IN THIS REQ
+    } catch (e) {   
         res.status(400).json(e);
     } 
-
-    //const res = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players.json');
-    //const responseData = await response.json();
-
-    //console.log(responseData);
-    /*
-    for ( let entry in responseData ) {
-        console.log(entry);
-        console.log(responseData[entry]);
-        console.log(responseData[entry].user);
-        if ( responseData[entry].user === uid ) {
-            console.log('user found in database: ' + responseData[entry].user);
-            authCtx.databaseId = entry;
-            break;
-        }
-    } */
-
-    //return response;
 }
 
 export default handler;

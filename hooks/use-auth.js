@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setError } from '../slices/error-modal-slice';
-import { setNotification } from "../slices/notification-slice";
 import AuthContext from "../slices/auth-context"; 
 import useDatabase from "./use-database";
 
@@ -60,7 +59,6 @@ const useAuth = () => {
             }
         } catch (error) {
             console.log(error);
-            //alert(error);
             setIsLoading(false);
         }
     };

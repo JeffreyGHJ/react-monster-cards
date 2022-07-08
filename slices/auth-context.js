@@ -31,7 +31,7 @@ const retrieveStoredToken = () => {
         const storedExpirationDate = localStorage.getItem('expirationTime'); 
         const remainingTime =  calculateRemainingTime(storedExpirationDate);
 
-        // if the user has less than an hour left on their last token, dont use that token anymore
+        // if the user has less than ... left on their last token, dont use that token anymore
         if ( remainingTime <= 60000 ) {     
             localStorage.removeItem('token');
             localStorage.removeItem('expirationTime');
@@ -84,7 +84,6 @@ export const AuthContextProvider = (props) => {
             // load player data from server
             console.log('calling loadPlayer hook from useEffect');
             loadPlayer(tokenData.uid);
-            // initPlayer(tokenData.uid);
         }
     }, [tokenData]);
  

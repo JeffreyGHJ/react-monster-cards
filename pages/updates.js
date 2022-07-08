@@ -2,9 +2,7 @@ import UpdateList from "../components/updates/UpdateList";
 
 const updates = () => {
     return (
-        <>
-            <UpdateList />
-        </>
+        <UpdateList />
     );
 }
 

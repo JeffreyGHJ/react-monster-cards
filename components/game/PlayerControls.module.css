@@ -1,11 +1,6 @@
 .player-controls {
-  /* background-color: rgb(123, 122, 212); */
   height: 46vh;
   padding: 0vh 1vw 1vh 1vw;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* border: solid red 1px; */
 }
 
 .player-controls-container {
@@ -25,7 +20,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  /* border: solid red 1px; */
 }
 
 .module-container {
@@ -39,7 +33,6 @@
   margin-left: auto;
   margin-right: auto;
   width: 66%;
-  /* height: 15%; */
 }
 
 .health-text {

@@ -62,18 +62,13 @@ const useDatabase = () => {
             }
         } catch (error) {
             console.log(error);
-            //alert(error);
         }
     };
 
-    // This should be changed once the db grows
-    // all users should not be able to trigger this at any time
-    // make the server call this periodically every 5min or so 
-    // users should only be able get the most recently generated results of getAllPlayers
     const getAllPlayers = async () => {
         console.log("Attempting to load all players");
         try {
-            const response = await fetch('/api/get-all-players');   // go up to the api route
+            const response = await fetch('/api/get-all-players');
             let responseData = await response.json();
             console.log(response);
             console.log(responseData);
@@ -93,11 +88,10 @@ const useDatabase = () => {
             } else {
                 console.log("fetched player data: ");
                 console.log(responseData);
-                return responseData;    // return back down to the caller (component)
+                return responseData; 
             }
         } catch (error) {
             console.log(error);
-            //alert(error);
         }
     }
 

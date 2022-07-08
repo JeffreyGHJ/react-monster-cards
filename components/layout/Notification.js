@@ -72,25 +72,3 @@ function Notification() {
 };
 
 export default Notification;
-
-
-
-
-// REFERENCE FOR POSSIBLE FUTURE USE
-/* if (typeof window === "object") {  // For handling portals with Next.js
-        return ReactDOM.createPortal(
-            <div className={classes['notification-container']} onClick={closeNotification}>
-                <div className={classes['notification-inner']}>
-                    <div className={classes['title']}>
-                        {notification.title}
-                    </div>
-                    <div className={classes['message']}>
-                        {notification.message}
-                    </div>
-                </div>
-            </div>, 
-            document.getElementById('notifications')
-        );
-    } else {
-        return null;
-    } */

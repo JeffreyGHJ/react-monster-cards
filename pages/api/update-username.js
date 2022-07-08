@@ -15,11 +15,11 @@ async function updateUsername(req, res) {
                 console.log(responseData);
                 if (!response.ok) {
                     console.log("adding error to response");
-                    res.status(responseData.error.code).json({      // this status code will produce RED in dev console
+                    res.status(responseData.error.code).json({      
                         error: responseData.error
                     });
                 } else {
-                    res.status(200).json(responseData);             // success
+                    res.status(200).json(responseData);             
                 }
             } catch (error) {
                 console.log(error);

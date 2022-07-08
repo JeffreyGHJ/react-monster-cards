@@ -6,7 +6,7 @@ const PlayerInfo = () => {
     const playerLevel = useSelector(state => state.player.playerLevel);
 
     return (
-        <div className={classes['player-info']} /* style={{ width: '100%' }} */>
+        <div className={classes['player-info']}>
             {'Player Info:'}
             <div className={classes['player-name']}>
                 {username}
