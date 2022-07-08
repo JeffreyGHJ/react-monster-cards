@@ -1,40 +1,29 @@
 async function handler(req, res) {
-    if ( req.method === 'POST' ) {
-        const { uid } = req.body
-        console.log("sending request for player data...");
-        console.log(uid);
-        try {
-            if (uid) {
-                console.log('test');
-                const response = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players/' + uid + '.json', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                res.setHeader('Content-Type', 'application/json');
-                const data = await response.json();
-                console.log(data);
-                if ( !response.ok ) { 
-                    console.log("adding error to response");
-                    res.status(data.error.code).json({      // this status code will produce RED in dev console
-                        error: data.error
-                    });
-                } else {
-                    res.status(200).json(data);             // success
+
+    console.log("sending request for player data...");
+
+    const { uid } = req.body
+
+    console.log(uid);
+    try {
+        if (uid) {
+            const response = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players/' + uid + '.json', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
                 }
-            } else {
-                console.log('test2');
-                res.status(405).json(new Error("no uid"));
-            }
-            console.log('test3');
-        } catch (error) {
-            console.log('test4');
-            console.log(error);
-            res.status(405).json(error);
-            //res.status(405).end();
+            });
+            const responseData = await response.json();
+            console.log(response);
+            console.log(responseData);
+            res.status(response.status).json(responseData);
+        } else {
+            res.status(400).json(new Error("no uid"));
         }
-    }
+    } catch (e) {   // FOR UNHANDLED ERRORS IN THIS REQ
+        res.status(400).json(e);
+    } 
+
     //const res = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players.json');
     //const responseData = await response.json();
 

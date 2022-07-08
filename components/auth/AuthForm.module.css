@@ -30,6 +30,7 @@
     justify-content: center;
     margin-top: 2vh;
     margin-bottom: 1vh;
+    z-index: 0;
 }
 
 .input-group input {
@@ -38,7 +39,6 @@
     border: none;
     border-radius: 0px 4px 4px 0px;
 }
-
 
 .input-decoration {
     display: flex;

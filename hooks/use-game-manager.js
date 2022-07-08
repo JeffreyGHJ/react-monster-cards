@@ -48,7 +48,7 @@ const useGameManager = () => {
         dispatch(setFirstEnemy());
         if ( !initialized ) {
             dispatch(scaleCurrentEnemy(playerLevel-1));
-            setInit();
+            /* setInit(); */
         } 
         // CLEAR BATTLE LOG?
     }

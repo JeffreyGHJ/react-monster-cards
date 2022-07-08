@@ -1,6 +1,37 @@
 async function getAllPlayers(req, res) {
     console.log("sending request for all players");
-    try { 
+    try {
+        const response = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players.json', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const responseData = await response.json();
+        console.log(response);
+        console.log(responseData);
+        res.status(response.status).json(responseData);
+    } catch (e) {   // FOR UNHANDLED ERRORS IN THIS REQ
+        res.status(400).json(e);
+    } 
+
+
+    /* if( !responseData.error ) {
+        res.json(responseData);
+    } else {
+        console.log('creating error object');
+        let errorObj = {
+            status: response.status,
+            statusText: response.statusText,
+            message: responseData.error
+        }
+        console.log(errorObj);
+        res.status(response.status).json(responseData);
+    } */
+
+
+
+    /* try { 
         const response = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players.json', {
             method: 'GET',
             headers: {
@@ -21,7 +52,7 @@ async function getAllPlayers(req, res) {
     } catch (error) {   // handle other errors
         console.log(error);
         res.status(405).json(error);
-    }
-} 
+    } */
+}
 
 export default getAllPlayers;

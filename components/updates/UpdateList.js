@@ -4,6 +4,58 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 7/7/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        UI Updates
+                    </h3>
+                    <ul>
+                        <li>
+                            Added a dismissable Error Modal for displaying various database and application errors to the user.
+                        </li>
+                        <li>
+                            Added a self-hiding Notification status bar to inform the user of successful or unsuccessful database operations.
+                        </li>
+                        <li>
+                            User can dismiss the Notification by clicking on it while it is still visible.
+                        </li>
+                    </ul>
+                    <h3>
+                        Changed Leaderboard structure and style
+                    </h3>
+                    <ul>
+                        <li>
+                            The Leaderboard now uses a table to keep the table columns in line with eachother.
+                        </li>
+                        <li>
+                            Restyled Leaderboard entries to be bigger and more readable especially on small devices.
+                        </li>
+                    </ul>
+                    <h3>
+                        Improved Error handling and feedback
+                    </h3>
+                    <ul>
+                        <li>
+                            Updated hooks to pass error response data into an error modal to be displayed to the user.
+                        </li>
+                        <li>
+                            Updated hooks to show Notification status regarding database interactions.
+                        </li>
+                        <li>
+                            Updated api calls to properly send database response data back to hooks.
+                        </li>
+                    </ul>
+                    <h3>
+                        Route change
+                    </h3>
+                    <ul>
+                        <li>
+                            Changed page name from 'playGame' to 'play'.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 7/1/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>

@@ -18,8 +18,12 @@ async function handler(req, res) {
                 'Content-Type': 'application/json'
             },
         });
-        res.setHeader('Content-Type', 'application/json');
-        const data = await response.json();
+        const responseData = await response.json();
+        console.log(response);
+        console.log(responseData);
+        res.status(response.status).json(responseData);
+        /* res.setHeader('Content-Type', 'application/json'); */
+        /* const data = await response.json();
         console.log(data);
         if ( !response.ok ) { 
             console.log("adding error to response");
@@ -28,11 +32,12 @@ async function handler(req, res) {
             });
         } else {
             res.status(200).json(data);
-        }
+        } */
     } catch (error) {
+        res.status(400).json(e);
         //console.log("error in authenticate-user.js");
-        res.json(error);
-        res.status(405).end();
+        /* res.json(error);
+        res.status(405).end(); */
     }
 }
 

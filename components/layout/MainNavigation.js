@@ -28,8 +28,8 @@ function MainNavigation(props) {
                             Home
                         </Link>
                     </li>
-                    <li className={router.pathname === '/playGame' ? classes['active-route'] : ''}>
-                        <Link href="/playGame">
+                    <li className={router.pathname === '/play' ? classes['active-route'] : ''}>
+                        <Link href="/play">
                             Play
                         </Link>
                     </li>

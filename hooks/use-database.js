@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import AuthContext from "../slices/auth-context";
 import { setPlayerLevel, setUsername } from "../slices/player-slice";
+import { setError } from '../slices/error-modal-slice';
+import { setNotification } from "../slices/notification-slice";
 
 
 const useDatabase = () => {
@@ -25,9 +27,27 @@ const useDatabase = () => {
             let responseData = await response.json();
             console.log(response);
             if (!response.ok) {
-                console.log('error in response');
+                console.log('error in response..');
+                let errorObj = {
+                    status: response.status,
+                    statusText: response.statusText,
+                    message: responseData.error || 'Error'
+                }
+                dispatch(setError(errorObj));
+                let notif = {
+                    status: 'error',
+                    title: 'Login Error',
+                    message: 'Could not load player details from database'
+                }
+                dispatch(setNotification(notif));
                 throw new Error(responseData.error.message);
             } else {
+                let notif = {
+                    status: 'success',
+                    title: 'Logged in',
+                    message: 'Successfully loaded player details from database'
+                }
+                dispatch(setNotification(notif));
                 console.log("fetched player data: ");
                 console.log(responseData);
                 console.log(responseData.playerLevel);
@@ -42,7 +62,7 @@ const useDatabase = () => {
             }
         } catch (error) {
             console.log(error);
-            alert(error);
+            //alert(error);
         }
     };
 
@@ -60,7 +80,16 @@ const useDatabase = () => {
 
             if (!response.ok) {
                 console.log('error in response');
-                throw new Error(responseData.error.message);
+                console.log(response.status);
+                console.log(response.statusText);   
+                console.log(responseData.error);    // rtdb errors do not have message prop
+                let errorObj = {
+                    status: response.status,
+                    statusText: response.statusText,
+                    message: responseData.error || 'Error'
+                }
+                dispatch(setError(errorObj));
+                throw new Error(responseData.error);
             } else {
                 console.log("fetched player data: ");
                 console.log(responseData);
@@ -68,7 +97,7 @@ const useDatabase = () => {
             }
         } catch (error) {
             console.log(error);
-            alert(error);
+            //alert(error);
         }
     }
 
@@ -104,7 +133,7 @@ const useDatabase = () => {
         if (uid) {
             console.log('updating player data on server');
             try {
-                const response = await fetch('/api/update-player-data', {
+                const response = await fetch('/api/update-player-data', { 
                     method: 'POST',
                     body: JSON.stringify({
                         uid: uid,
@@ -117,6 +146,28 @@ const useDatabase = () => {
 
                 const data = await response.json();
                 console.log(data);
+                if ( response.ok ) {
+                    let notif = {
+                        status: 'success',
+                        title: 'Player Saved',
+                        message: 'Player details saved to database successfully!'
+                    }
+                    dispatch(setNotification(notif))
+                } else {
+                    let notif = {
+                        status: 'error',
+                        title: 'Player Not Saved',
+                        message: 'Error while saving player details to database.'
+                    }
+                    dispatch(setNotification(notif))
+                    let errorObj = {
+                        status: response.status,
+                        statusText: response.statusText,
+                        message: responseData.error || 'Error'
+                    }
+                    dispatch(setError(errorObj));
+                    throw new Error(responseData.error);
+                }
             } catch (e) {
                 console.log(e);
             }
@@ -143,6 +194,11 @@ const useDatabase = () => {
                 });
                 const data = await response.json();
                 console.log(data);
+
+                if ( response.ok ) {
+                    dispatch(setUsername(username));
+                }
+
                 router.replace('/');
             } catch (e) {
                 console.log(e);

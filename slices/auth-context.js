@@ -122,7 +122,7 @@ export const AuthContextProvider = (props) => {
         const remainingTime = calculateRemainingTime(expirationTime);
         logoutTimer = setTimeout(logoutHandler, remainingTime);
 
-        if (ISBROWSER) {
+        if (ISBROWSER) { 
             localStorage.setItem('token', token);
             localStorage.setItem('expirationTime', expirationTime);
             localStorage.setItem('uid', localId);

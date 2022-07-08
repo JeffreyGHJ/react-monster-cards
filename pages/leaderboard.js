@@ -3,7 +3,6 @@ import LeaderboardList from "../components/leaderboard/LeaderboardList";
 import useDatabase from "../hooks/use-database";
 
 function Leaderboard(props)  {
-
     const { getAllPlayers } = useDatabase()
     const [players, setPlayers] = useState([]);
 
@@ -27,10 +26,9 @@ function Leaderboard(props)  {
         getPlayers();
     }, []);
     
-
     return (
         <>
-            <LeaderboardList players={players}/>
+            <LeaderboardList players={players} />
         </>
     );
 };

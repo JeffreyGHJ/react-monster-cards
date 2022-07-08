@@ -25,7 +25,7 @@
     justify-content: space-around;
     align-items: center;
     width: 60%;
-    margin-bottom: 10%;
+    margin-bottom: 8%;
 }
 
 .icon-entry {
@@ -67,5 +67,22 @@
 .github-link a {
     color: rgb(197, 77, 227);
     text-decoration: none;
+}
+
+@media only screen and (orientation: portrait) { 
+    .icon-label {
+        font-size: 1.3vmax;
+    }
+    
+    .github-link {
+        margin-bottom: 1vmax;
+        font-size: 1.8vmax;
+    }
+
+    .icon-box {
+        height: 8vmax;
+        width: 8vmax;
+        margin: 0 1vh 0 1vh
+    }
 }
 

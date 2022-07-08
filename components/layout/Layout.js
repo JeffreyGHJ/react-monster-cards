@@ -1,12 +1,18 @@
+import ErrorModal from "./ErrorModal";
 import MainNavigation from "./MainNavigation";
+import Notification from "./Notification";
 
 function Layout(props) {
     return (
         <div>
             <MainNavigation />
-            <main>{props.children}</main>
+            <Notification />
+            <ErrorModal />
+            <main>
+                {props.children}
+            </main>
         </div>
     );
 }
 
-export default Layout;
+export default Layout; 

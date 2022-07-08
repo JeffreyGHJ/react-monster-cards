@@ -5,6 +5,93 @@
     align-items: center;
 }
 
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    background-color:rgb(158, 50, 225);
+    color: black;
+    width: 80%;
+    max-width: 30rem;
+}
+
+.leaderboard-container table {
+    border-collapse: separate;
+    border-spacing: 0 1vmin;
+    margin-left: 1.6vmin;
+    margin-right: 1.6vmin;
+    margin-bottom: 1vmin;
+    width: 80%;
+}
+
+.leaderboard-container th {
+    color: white;
+    text-shadow: .2vmin .2vmin 0.6vmin rgb(80, 11, 69);
+}
+
+.leaderboard-container td {
+    background-color: white;
+}
+
+.leaderboard-container td {
+    padding: 1vmin;
+}
+
+.bordered-row {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+}
+
+.rank {
+    border-radius: 12px 0 0 12px;
+    text-align: center;
+}
+
+.name {
+    font-weight: bold;
+    text-align: left;
+}
+
+.level {
+    border-radius: 0 12px 12px 0;
+    text-align: center;
+}
+
+.loading-notification {
+    color: white;
+    margin: 2vmin;
+}
+
+@media only screen and (orientation: portrait) { 
+    .leaderboard-container table {
+        border-spacing: 0 1vmax;
+        margin-left: 1.6vmax;
+        margin-right: 1.6vmax;
+        margin-bottom: 1vmax;
+    }
+
+    .leaderboard-container td {
+        padding: 1vmax;
+    }
+
+    .loading-notification {
+        margin: 2vmax;
+    }
+}
+
+/*===================================================================*/
+/*          OLD CSS STYLES - SAVED FOR LATER
+/*===================================================================*/
+
+/* .leaderboard {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .leaderboard-list {
     padding: 1vh 1vw 3vh 1vw;
     list-style: none;
@@ -31,4 +118,4 @@
     margin-right: 1vw;
     margin-top: .5vh;
     margin-bottom: .5vh;
-}
+} */

@@ -1,9 +1,9 @@
 import MainGame from "../components/game/MainGame.js";
 
-const playGame = (props) => {
+const play = (props) => {
     return (
         <MainGame />
     );
 };
 
-export default playGame; 
+export default play; 

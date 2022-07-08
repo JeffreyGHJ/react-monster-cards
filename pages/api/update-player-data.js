@@ -5,14 +5,14 @@ async function handler(request, res) {
 
         console.log("saving new player to db");
         const response = await fetch('https://react-monster-cards-default-rtdb.firebaseio.com/players/' + uid + '.json', {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify({
                 playerLevel: playerLevel
             }),
         });
         const responseData = await response.json();
         console.log(responseData);
-        res.json(responseData);
+        res.status(response.status).json(responseData); 
 
         // TO-DO: SEND A RESPONSE BACK TO CALLER
 
