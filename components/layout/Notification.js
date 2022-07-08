@@ -26,7 +26,7 @@ function Notification() {
         if (notification?.status === 'success' || notification?.status === 'error') {   // The pending status will stay open
             const notificationTimer = setTimeout(() => {
                 closeNotification();
-            }, 3000);
+            }, 3500);
 
             return () => clearTimeout(notificationTimer);
         }

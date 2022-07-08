@@ -9,6 +9,7 @@
     font-size: 1.6vmin;
     z-index: 5;
     transition: all 0.3s ease-out;
+    text-shadow: .2rem .2rem .4rem rgb(54, 43, 56);
 }
 
 .test {
@@ -35,7 +36,7 @@
     flex-direction: row;
     font-weight: 500;
 /*     margin-left: 2%; */
-    overflow: hidden;
+    /* overflow: hidden; */
     white-space: nowrap;
 }
 

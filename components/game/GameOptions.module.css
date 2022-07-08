@@ -6,13 +6,14 @@
     border-radius: 12px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
     margin: 1vmin;
-    width: 20%;
+    width: 30%;
 }
 
 .control-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
 }
 
 .control-panel button {
@@ -20,13 +21,14 @@
 /*     border: 1px solid #88005b;
     background-color: #88005b; */
     color: white;
-    padding: .6vmin 2vmin;
-    border-radius: 12px;
+    padding: 1.4vmin 2vmin;
+    border-radius: 8px;
     margin: 1vmin;
-    width: 18vmin;
+    width: 100%;
     font-size: 2.5vmin;
     cursor: pointer;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    text-shadow: .2rem .2rem .4rem rgb(92, 47, 19);
 }
 
 .control-panel button:focus {

@@ -11,6 +11,10 @@
     margin-top: 15vh;
 }
 
+.container h2{
+    text-shadow: .2rem .2rem .4rem rgb(58, 13, 53);
+}
+
 .inputs {
     display: flex;
     flex-direction: column;
@@ -46,7 +50,7 @@
     align-items: center;
     background-color: #422740;
     border-radius: 4px 0px 0px 4px;
-    width: 3vw;
+    width: 10%;
 }
 
 .input-decoration-outter {
@@ -70,7 +74,7 @@
     width: 45%;
     margin: auto;
     margin-top: 2vh;
-    font-size: 2vmin;
+/*     font-size: 2vmin; */
     min-height: 2rem;
 }
 

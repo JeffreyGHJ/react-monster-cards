@@ -33,6 +33,7 @@
     height: 6vh;
     cursor: pointer;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+    text-shadow: .2rem .2rem .4rem rgb(37, 23, 39);
 }
 
 .control-panel button:focus {
@@ -57,4 +58,5 @@
     box-shadow: none;
     color: #3f3f3f;
     cursor: not-allowed;
+    text-shadow: none;
 }

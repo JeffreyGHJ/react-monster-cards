@@ -4,10 +4,46 @@ const UpdateList = (props) => {
     return (
         <div id="updates">
             <div className={classes["update-item"]}>
+                <h1>Update: 7/8/22</h1>
+                <div className={classes["content-area"]}>
+                    <h3>
+                        Username validation
+                    </h3>
+                    <ul>
+                        <li>
+                            New requirements when a user updates their username via the profile page.
+                        </li>
+                        <li>
+                            Username can have a maximum length of 24 characters and a minimum length of 4 characters.
+                        </li>
+                        <li>
+                            Error modal will be displayed when user inputs an invalid username.
+                        </li>
+                    </ul>
+                    <h3>
+                        Minor tweaks to styles across site pages
+                    </h3>
+                    <ul>
+                        <li>
+                            Added text shadows to some buttons and labels to increase visibility and add depth.
+                        </li>
+                        <li>
+                            Increased some text sizes and buttons for readability on smaller screens.
+                        </li>
+                        <li>
+                            Changed size of username input to better fit within the profile page.
+                        </li>
+                        <li>
+                            Increased size of some elements in the login page.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className={classes["update-item"]}>
                 <h1>Update: 7/7/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
-                        UI Updates
+                        UI updates
                     </h3>
                     <ul>
                         <li>
@@ -78,7 +114,7 @@ const UpdateList = (props) => {
                         </li>
                     </ul>
                     <h3>
-                        Bug Fix
+                        Bug fix
                     </h3>
                     <ul>
                         <li>
@@ -105,7 +141,7 @@ const UpdateList = (props) => {
                 <h1>Update: 6/30/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
-                        Added confirmation dialog to 'Surrender' option in player controls
+                        Added confirmation dialog to 'Surrender' option in Player Controls
                     </h3>
                     <ul>
                         <li>
@@ -130,7 +166,7 @@ const UpdateList = (props) => {
                         </li>
                     </ul>
                     <h3>
-                        Bug Fix
+                        Bug fix
                     </h3>
                     <ul>
                         <li>
@@ -184,7 +220,7 @@ const UpdateList = (props) => {
                 <h1>Update: 6/23/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
-                        Updated Main Game Interface
+                        Updated Main Game interface
                     </h3>
                     <ul>
                         <li>
@@ -206,7 +242,7 @@ const UpdateList = (props) => {
                 <h1>Update: 6/22/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
-                        Implemented Remaining Player Abilities
+                        Implemented remaining player abilities
                     </h3>
                     <ul>
                         <li>
@@ -222,7 +258,7 @@ const UpdateList = (props) => {
                 <h1>Update: 6/21/22</h1>
                 <div className={classes["content-area"]}>
                     <h3>
-                        Updated Site Page Styles
+                        Updated site page styles
                     </h3>
                     <ul>
                         <li>

@@ -30,7 +30,7 @@ const LeaderboardList = (props) => {
                             </thead>
                             <tbody>
                                 {props.players.map(player => (
-                                    <tr className={classes['bordered-row']}>
+                                    <tr key={rank} className={classes['bordered-row']}>
                                         <td className={classes['rank']}>{rank++}</td>
                                         <td className={classes['name']}>{player.username}</td>
                                         <td className={classes['level']}>{player.playerLevel}</td>
