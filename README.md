@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# React Monster Cards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Battle against monsters as cards!
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is a game demo that I created while learning how to build React web applications. 
 
-### `npm start`
+In this game demo, users can battle against a small variety of monsters which are depicted on playing card style components. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project also includes authentication and persistence with a Firebase database so that users can save their game progress between application sessions. There is also a leaderboard which ranks all players saved in the database by thier player level.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project was initially bootstrapped with React create-react-app but was later migrated to Next.js next-app in order to leverage the use of Next.js API routes and file based routing. Additionally, Redux Toolkit is used for this app's reactive state management choice.
 
-### `npm test`
+## How to Run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Clone this repository
+  - Run `npm install`
+  - Run `npm run dev`
 
-### `npm run build`
+## Deployment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Next.js projects can be easily deployed via [Vercel](https://vercel.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Credits
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I learned to build React apps from [Academind video tutorials](https://academind.com/).\
+All pixel art was sourced for free from [Itch.io](https://itch.io/).\
+Tech Stack: 
+  - [React](https://reactjs.org/) 
+  - [Redux Toolkit](https://redux.js.org/) 
+  - [Next.js](https://nextjs.org/) 
+  - [Vercel](https://vercel.com/) 
+  - [Firebase](https://firebase.google.com/)
