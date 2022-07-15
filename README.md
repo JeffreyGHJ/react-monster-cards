@@ -2,6 +2,8 @@
 
 Battle against monsters as cards!
 
+Try the demo! -> [https://react-monster-cards.vercel.app/](https://react-monster-cards.vercel.app/)
+
 ## Description
 
 This is a game demo that I created while learning how to build React web applications. 
@@ -20,7 +22,7 @@ This project was initially bootstrapped with React create-react-app but was late
 
 ## Deployment
 
-Next.js projects can be easily deployed via [Vercel](https://vercel.com/)
+Next.js projects can be easily deployed via [Vercel](https://vercel.com/).
 
 ## Credits
 
